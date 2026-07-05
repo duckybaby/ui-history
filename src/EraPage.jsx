@@ -1,7 +1,9 @@
 import { useEffect, useRef } from 'react'
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom'
+import { useLenis } from 'lenis/react'
 import gsap from 'gsap'
 import { STOPS, ERA_PAGES } from './data.js'
+import { takeMorph } from './morph.js'
 
 // Dedicated era pages (/era/:id) — modern editorial: hero image, numbered
 // sections, figures, quote, sources, prev/next. Navigation direction drives
@@ -10,6 +12,7 @@ export default function EraPage() {
   const { id } = useParams()
   const navigate = useNavigate()
   const location = useLocation()
+  const lenis = useLenis()
   const wrapRef = useRef(null)
 
   const idx = STOPS.findIndex((s) => s.id === id)
@@ -18,11 +21,41 @@ export default function EraPage() {
   const prev = idx > 0 ? STOPS[idx - 1] : null
   const next = idx >= 0 && idx < STOPS.length - 1 ? STOPS[idx + 1] : null
 
-  // entrance: coming from "next" the page rises from below; from "prev" it drops in
+  // entrances:
+  // - from the homepage (seamless): the photo morphs via the view transition;
+  //   the hero details fade + rise from ~50px below, staggered
+  // - prev/next within the timeline: the whole page slides (dir-based)
   useEffect(() => {
-    gsap.set('#root', { clearProps: 'transform,opacity,visibility' })   // undo the homepage's exit lift
+    gsap.set('#root', { clearProps: 'transform,opacity,visibility' })   // safety: undo any exit styles
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     if (reduce || !wrapRef.current) return
+    if (location.state?.seamless) {
+      lenis?.start()
+      const clone = takeMorph()
+      const hero = wrapRef.current.querySelector('.ep-hero')
+      const details = wrapRef.current.querySelectorAll('.ep-hero-in > *')
+      const home = wrapRef.current.querySelector('.ep-home')
+      if (clone && hero) {
+        // arrive full-bleed: the hero matches the clone pixel for pixel, so
+        // the swap is invisible; then the page composes itself around you —
+        // the hero settles to its height while the details rise in
+        gsap.set(hero, { minHeight: '100vh' })
+        gsap.set([details, home], { autoAlpha: 0 })
+        requestAnimationFrame(() => {
+          clone.remove()
+          // one continuous motion: the hero settles AND the text rises together
+          gsap.timeline()
+            .to(hero, { minHeight: '76vh', duration: 0.65, ease: 'power3.inOut', clearProps: 'minHeight' }, 0)
+            .fromTo(details, { y: 50, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.7, ease: 'power3.out', stagger: 0.09 }, 0.02)
+            .fromTo(home, { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5 }, 0.3)
+        })
+      } else {
+        // no clone (reduced motion or direct hit): just the gentle rise
+        gsap.fromTo(details, { y: 50, autoAlpha: 0 },
+          { y: 0, autoAlpha: 1, duration: 0.7, ease: 'power3.out', stagger: 0.09, delay: 0.1 })
+      }
+      return
+    }
     const dir = location.state?.dir
     if (!dir) return
     gsap.fromTo(wrapRef.current,
@@ -59,10 +92,17 @@ export default function EraPage() {
         <div className="ep-hero-in">
           <span className="ep-yr">{stop.big}</span>
           <h1>{stop.title}</h1>
-          <span className="ep-cursive">{stop.cursive}</span>
           <p className="ep-lede">{stop.content}</p>
         </div>
       </header>
+
+      {/* the movement label rides its own marquee under the hero: bare white
+          background, cursive in this era's homepage ribbon colour */}
+      <div className={`ep-marquee ${idx % 2 ? 'ep-marquee--b' : 'ep-marquee--a'}`} aria-hidden="true">
+        <div className="ep-marquee-track">
+          {Array.from({ length: 12 }, (_, i) => <span key={i}>{stop.cursive}</span>)}
+        </div>
+      </div>
 
       {page ? (
         <>

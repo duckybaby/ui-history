@@ -3,6 +3,7 @@ import { Routes, Route, useLocation } from 'react-router-dom'
 import { useLenis } from 'lenis/react'
 import Home from './Home.jsx'
 import EraPage from './EraPage.jsx'
+import { recallScroll } from './morph.js'
 
 function Footer() {
   return (
@@ -31,13 +32,18 @@ function Footer() {
   )
 }
 
-// router doesn't reset scroll between routes; do it here (through Lenis)
+// router doesn't reset scroll between routes; do it here (through Lenis).
+// force:true because the era-entry transition stops Lenis mid-navigation, and
+// a stopped Lenis silently ignores scrollTo. Returning to the homepage
+// restores the position remembered by the last "Explore this era" click
+// (works for the back-link and the browser back button alike).
 function ScrollToTop() {
   const { pathname } = useLocation()
   const lenis = useLenis()
   useEffect(() => {
-    if (lenis) lenis.scrollTo(0, { immediate: true })
-    else window.scrollTo(0, 0)
+    const target = pathname === '/' ? recallScroll() : 0
+    if (lenis) lenis.scrollTo(target, { immediate: true, force: true })
+    else window.scrollTo(0, target)
   }, [pathname, lenis])
   return null
 }

@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
 import {
   FaApple, FaWindows, FaMobileScreenButton, FaDesktop, FaTabletScreenButton, FaLaptop,
   FaHeart, FaStar, FaThumbsUp, FaBookmark, FaFloppyDisk, FaPlus, FaHandsClapping,
 } from 'react-icons/fa6'
 import Timeline from './Timeline.jsx'
 import Manifesto from './Manifesto.jsx'
+import Saver from './Saver.jsx'
 import logo from './assets/logo.svg'
 import illustration from './assets/illustration.svg'
 
@@ -72,28 +72,10 @@ export default function Home() {
       {/* ============ TIMELINE ============ */}
       <Timeline />
 
-      {/* ============ TESTIMONIAL ============ */}
-      <section className="quote">
-        <div className="mk" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none"><path d="M10 7c-3 0-5 2-5 5v5h5v-5H7c0-2 1-3 3-3V7Zm9 0c-3 0-5 2-5 5v5h5v-5h-3c0-2 1-3 3-3V7Z" fill="currentColor"/></svg>
-        </div>
-        <blockquote>“Simple things should be simple. Complex things should be possible.”</blockquote>
-        <p className="by"><b>Alan Kay</b> &nbsp;·&nbsp; Xerox PARC</p>
-      </section>
-
-      {/* ============ CLOSING CTA ============ */}
-      <section className="cta" id="eras">
-        <svg className="blob" viewBox="0 0 200 200" aria-hidden="true"><path fill="currentColor" d="M44,-58C56,-49,63,-33,66,-17C69,-1,68,16,61,30C53,44,40,55,24,62C8,69,-11,71,-28,65C-45,59,-60,44,-67,26C-74,8,-73,-13,-64,-29C-55,-45,-39,-55,-23,-62C-7,-69,9,-72,24,-69C30,-67,38,-64,44,-58Z" transform="translate(100 100)"/></svg>
-        <div className="inner">
-          <div className="eyebrow"><b>The eras</b></div>
-          <h2>Two hundred years of interfaces, kept in one place.</h2>
-          <p>Ten eras, from punch cards to talking machines. Start at the beginning.</p>
-          <div className="cta-act">
-            <Link to="/era/before-screen" className="btn btn-accent">Start with the first era</Link>
-            <a href="#timeline" className="btn btn-ghost">Back to the timeline</a>
-          </div>
-        </div>
-      </section>
+      {/* ============ SCREENSAVER (the resolution box) ============
+          Parked while we finish the era-page review: marks are ~80% and need
+          a fresh-eyes polish pass. Re-enable by uncommenting. */}
+      {/* <Saver /> */}
     </>
   )
 }

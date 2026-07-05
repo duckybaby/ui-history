@@ -4,6 +4,7 @@ import { useLenis } from 'lenis/react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { STOPS } from './data.js'
+import { plantMorph, rememberScroll } from './morph.js'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -27,17 +28,72 @@ export default function Timeline() {
   const lenis = useLenis()
   const navigate = useNavigate()
 
-  // exit transition into an era: the whole page lifts and fades (forward =
-  // upward), then the era page rises from below (its 'next' entrance)
+  // "entering the era": the clicked panel's image (curve, gradient, parallax
+  // offset and all) GROWS to swallow the viewport while the homepage stays
+  // alive beneath it — nothing ever flashes grey. Only when the image owns
+  // the screen do we navigate; the era page then settles around it.
   const explore = (id) => (e) => {
     e.preventDefault()
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    const bg = e.currentTarget.closest('.era')?.querySelector('.era-bg')
+    const img = bg?.querySelector('img')
     const path = `/era/${id}`
-    if (reduce) { navigate(path, { state: { dir: 'next' } }); return }
-    gsap.to('#root', {
-      y: '-8vh', autoAlpha: 0, duration: 0.3, ease: 'power2.in',
-      onComplete: () => navigate(path, { state: { dir: 'next' } }),
+    rememberScroll(window.scrollY)   // so coming back lands exactly here
+    if (reduce || !bg || !img) { navigate(path, { state: { seamless: true } }); return }
+
+    lenis?.stop()
+    const r = bg.getBoundingClientRect()
+    const first = bg.style.clipPath === 'none' || !bg.style.clipPath
+    const sag0 = first ? 0 : window.innerWidth * SAG
+
+    // clone: container (clips) + img (with the live parallax offset) + two
+    // shades (panel gradient fading out, hero gradient fading in)
+    const clone = document.createElement('div')
+    Object.assign(clone.style, {
+      position: 'fixed', left: `${r.left}px`, top: `${r.top}px`,
+      width: `${r.width}px`, height: `${r.height}px`,
+      overflow: 'hidden', zIndex: 999, pointerEvents: 'none',
     })
+    const ci = document.createElement('img')
+    ci.src = img.currentSrc || img.src
+    Object.assign(ci.style, {
+      position: 'absolute', left: 0, top: '-20%', width: '100%', height: '140%',
+      objectFit: 'cover', transform: getComputedStyle(img).transform, margin: 0,
+    })
+    const shadeA = document.createElement('div')
+    Object.assign(shadeA.style, {
+      position: 'absolute', inset: 0,
+      background: first ? 'rgba(0,0,0,.1)' : 'linear-gradient(180deg,rgba(17,24,39,.42) 0%,rgba(17,24,39,.3) 45%,rgba(17,24,39,.85) 100%)',
+    })
+    const shadeB = document.createElement('div')
+    Object.assign(shadeB.style, {
+      position: 'absolute', inset: 0, opacity: 0,
+      background: 'linear-gradient(180deg,rgba(17,24,39,.35),rgba(17,24,39,.88))', // = .ep-hero::after
+    })
+    clone.append(ci, shadeA, shadeB)
+    document.body.appendChild(clone)
+
+    // one manually-driven tween: rect grows to the viewport while the seam
+    // curve flattens in step (clip-path coords must track the live size)
+    const p = { t: 0 }
+    gsap.to(p, {
+      t: 1, duration: 0.7, ease: 'power3.inOut',
+      onUpdate: () => {
+        const t = p.t
+        const L = r.left * (1 - t), T = r.top * (1 - t)
+        const W = r.width + (window.innerWidth - r.width) * t
+        const H = r.height + (window.innerHeight - r.height) * t
+        const s = sag0 * (1 - t)
+        Object.assign(clone.style, { left: `${L}px`, top: `${T}px`, width: `${W}px`, height: `${H}px` })
+        clone.style.clipPath = `path('M 0 0 Q ${W / 2} ${2 * s} ${W} 0 L ${W} ${H} L 0 ${H} Z')`
+        shadeB.style.opacity = t
+      },
+      onComplete: () => {
+        plantMorph(clone)
+        navigate(path, { state: { seamless: true } })
+      },
+    })
+    gsap.to(ci, { top: 0, height: '100%', transform: 'none', duration: 0.7, ease: 'power3.inOut' })
   }
   const reduce = typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches
 

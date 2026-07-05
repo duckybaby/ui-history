@@ -9,7 +9,7 @@
    for the placeholder colour behind each card).
    ============================================================ */
 
-import e01Punchcard from './assets/eras/e01-punchcard.webp'
+import e01Hollerith from './assets/eras/e01-hollerith.webp'
 import e02MissionControl from './assets/eras/e02-mission-control.webp'
 import e03GraphicalSpark from './assets/eras/e03-graphical-spark.webp'
 import e04PointClick from './assets/eras/e04-point-click.webp'
@@ -92,7 +92,7 @@ export const ERAS = [
 export const STOPS = [
   {
     id: 'before-screen',
-    img: e01Punchcard,
+    img: e01Hollerith,
     big: '1800s–1945',
     cursive: 'Hands on the Machine',
     title: 'Before the Screen',
@@ -253,7 +253,7 @@ export const ERA_PAGES = {
       { label: 'Smithsonian Magazine: where the QWERTY keyboard came from', url: 'https://www.smithsonianmag.com/history/the-qwerty-keyboard-will-never-die-where-did-the-150-year-old-design-come-from-49863249/' },
       { label: 'UX Magazine: Pilot error? Chapanis and the shape of things to come', url: 'https://uxmag.com/articles/pilot-error-chapanis-and-the-shape-of-things-to-come' },
       { label: 'Vannevar Bush, "As We May Think", The Atlantic, 1945', url: 'https://www.theatlantic.com/magazine/archive/1945/07/as-we-may-think/303881/' },
-      { label: 'Era photo: IBM 029 keypunch by Joe Mabel, CC BY-SA 3.0', url: 'https://commons.wikimedia.org/wiki/File:LCM_-_IBM_029_Card_Punch_01.jpg' },
+      { label: 'Era photo: Hollerith card reader by Marcin Wichary, CC BY 2.0', url: 'https://commons.wikimedia.org/wiki/File:Hollerith_card_reader_closeup.jpg' },
     ],
   },
 
