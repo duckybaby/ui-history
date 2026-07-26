@@ -187,6 +187,8 @@ export const ERA_PAGES = {
       { label: 'UX Magazine: Pilot error? Chapanis and the shape of things to come', url: 'https://uxmag.com/articles/pilot-error-chapanis-and-the-shape-of-things-to-come' },
       { label: 'Vannevar Bush, "As We May Think", The Atlantic, 1945', url: 'https://www.theatlantic.com/magazine/archive/1945/07/as-we-may-think/303881/' },
       { label: 'Era photo: Hollerith card reader by Marcin Wichary, CC BY 2.0', url: 'https://commons.wikimedia.org/wiki/File:Hollerith_card_reader_closeup.jpg' },
+      { label: 'Liebowitz & Margolis, "Typing Errors" — why the Dvorak evidence does not hold up', url: 'https://reason.com/1996/06/01/typing-errors/' },
+      { label: 'Yasuoka & Yasuoka: on the prehistory of QWERTY', url: 'http://kanji.zinbun.kyoto-u.ac.jp/~yasuoka/publications/PreQWERTY.html' },
     ],
     left: {
       paras: [
@@ -230,6 +232,7 @@ export const ERA_PAGES = {
       { label: 'Dennis Ritchie, "The Evolution of the Unix Time-sharing System", 1984', url: 'https://www.cis.upenn.edu/~lee/07cis505/Papers/ritchie-bstj84.pdf' },
       { label: 'Computer History Museum: the earliest Unix code', url: 'https://computerhistory.org/blog/the-earliest-unix-code-an-anniversary-source-code-release/' },
       { label: 'Multicians: the IBM 7094 and CTSS', url: 'https://www.multicians.org/thvv/7094.html' },
+      { label: 'Multicians: "Myth: Multics failed in 1969"', url: 'https://multicians.org/myths.html' },
     ],
     left: {
       paras: [
@@ -313,6 +316,7 @@ export const ERA_PAGES = {
       { label: 'The New Yorker: Creation myth. Xerox PARC, Apple, and the truth about innovation', url: 'https://www.newyorker.com/magazine/2011/05/16/creation-myth' },
       { label: 'Computer History Museum: input and output, the desktop', url: 'https://www.computerhistory.org/revolution/input-output/14/347' },
       { label: 'Wikipedia: history of the graphical user interface', url: 'https://en.wikipedia.org/wiki/History_of_the_graphical_user_interface' },
+      { label: 'Johnson et al., "The Xerox Star: A Retrospective" — on why its windows were tiled', url: 'https://members.dcn.org/dwnelson/XeroxStarRetrospective.html' },
     ],
     left: {
       paras: [
@@ -356,6 +360,7 @@ export const ERA_PAGES = {
       { label: 'W3C, Tim Berners-Lee: the WorldWideWeb browser', url: 'https://www.w3.org/People/Berners-Lee/WorldWideWeb.html' },
       { label: 'Tim O’Reilly: What is Web 2.0 (2005)', url: 'https://www.oreilly.com/pub/a/web2/archive/what-is-web-20.html' },
       { label: 'Wikipedia: history of the World Wide Web', url: 'https://en.wikipedia.org/wiki/History_of_the_World_Wide_Web' },
+      { label: 'The original 1989 proposal, as CERN hosts it', url: 'https://info.cern.ch/Proposal.html' },
     ],
     left: {
       paras: [
@@ -399,6 +404,8 @@ export const ERA_PAGES = {
       { label: 'Computer History Museum: Little emoji, big story', url: 'https://computerhistory.org/exhibits/little-emoji-big-story/' },
       { label: 'Ethan Marcotte, "Responsive Web Design", A List Apart, 2010', url: 'https://alistapart.com/article/responsive-web-design/' },
       { label: '512 Pixels: 20 years of Aqua', url: 'https://512pixels.net/2020/01/20-years-of-aqua/' },
+      { label: 'Emojipedia: correcting the record on the first emoji set', url: 'https://blog.emojipedia.org/correcting-the-record-on-the-first-emoji-set/' },
+      { label: 'Apple Newsroom: Apple reinvents the phone with iPhone, January 2007', url: 'https://www.apple.com/newsroom/2007/01/09Apple-Reinvents-the-Phone-with-iPhone/' },
     ],
     left: {
       paras: [
@@ -440,6 +447,9 @@ export const ERA_PAGES = {
       { label: 'Wikipedia: Metro (design language)', url: 'https://en.wikipedia.org/wiki/Metro_(design_language)' },
       { label: 'Wikipedia: flat design', url: 'https://en.wikipedia.org/wiki/Flat_design' },
       { label: 'Nielsen Norman Group: flat design and its usability costs', url: 'https://www.nngroup.com/articles/flat-design/' },
+      { label: 'Nielsen Norman Group: long-term exposure to flat design', url: 'https://www.nngroup.com/articles/flat-design-long-exposure/' },
+      { label: 'Wikipedia: the hamburger button, drawn by Norm Cox for the Xerox Star in 1981', url: 'https://en.wikipedia.org/wiki/Hamburger_button' },
+      { label: 'Apple Newsroom: Apple unveils iOS 7, June 2013', url: 'https://www.apple.com/newsroom/2013/06/10Apple-Unveils-iOS-7/' },
       { label: 'Dezeen: Apple unveils iOS 7 interface by Jonathan Ive at WWDC, June 2013', url: 'https://www.dezeen.com/2013/06/10/new-apple-ios-software-flat-design-jonathan-ive-wwdc/' },
     ],
     left: {
@@ -483,6 +493,7 @@ export const ERA_PAGES = {
       { label: 'Android Developers Blog: Material Design, 2014', url: 'https://android-developers.googleblog.com/2014/08/material-design-in-2014-google-io-app.html' },
       { label: 'Material Design, the original 2014 spec', url: 'https://m1.material.io/' },
       { label: 'IBM Carbon, Shopify Polaris, Salesforce Lightning: design systems', url: 'https://carbondesignsystem.com/' },
+      { label: 'Google Design: the eras of Material Design, including the Quantum Paper codename', url: 'https://design.google/library/material-design-eras' },
     ],
     left: {
       paras: [
@@ -525,6 +536,7 @@ export const ERA_PAGES = {
       { label: 'Michal Malewicz: Neumorphism in user interfaces', url: 'https://uxdesign.cc/neumorphism-in-user-interfaces-b47cef3bf3a6' },
       { label: 'Nielsen Norman Group: Dark Mode vs. Light Mode, Which Is Better?', url: 'https://www.nngroup.com/articles/dark-mode/' },
       { label: 'Michal Malewicz: Glassmorphism in user interfaces, 2020', url: 'https://uxdesign.cc/glassmorphism-in-user-interfaces-1f39bb1308c9' },
+      { label: 'Michal Malewicz: accessibility versus design trends, on why neumorphism failed', url: 'https://uxdesign.cc/accessibility-vs-design-trends-aeb24a45ef4' },
     ],
     left: {
       paras: [
@@ -567,6 +579,8 @@ export const ERA_PAGES = {
       { label: 'OpenAI: introducing ChatGPT, November 2022', url: 'https://openai.com/index/chatgpt/' },
       { label: 'Apple Newsroom: Apple Vision Pro', url: 'https://www.apple.com/newsroom/2024/01/apple-vision-pro-available-in-the-us-on-february-2/' },
       { label: 'Wikipedia: Amazon Echo', url: 'https://en.wikipedia.org/wiki/Amazon_Echo' },
+      { label: 'Amazon: Echo goes on sale to everyone, June 2015', url: 'https://press.aboutamazon.com/2015/6/amazon-echo-now-available-to-all-customers' },
+      { label: 'Apple Newsroom: iPhone 4S and Siri, October 2011', url: 'https://www.apple.com/newsroom/2011/10/04Apple-Launches-iPhone-4S-iOS-5-iCloud/' },
     ],
     left: {
       paras: [
