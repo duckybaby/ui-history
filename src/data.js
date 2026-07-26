@@ -29,6 +29,49 @@ import a08Elevation from './assets/eras/a08-elevation.webp'
 import a09Bigsur from './assets/eras/a09-bigsur.webp'
 import a10Echo from './assets/eras/a10-echo.webp'
 
+/* the two pairs on each era page: the interface in use, then what it
+   turned into. Credits print under every caption. */
+import b01Switchboard from './assets/eras/b01-switchboard.webp'
+import b02Keypunch from './assets/eras/b02-keypunch.webp'
+import b03Keyboard from './assets/eras/b03-keyboard.webp'
+import b04Touchkeys from './assets/eras/b04-touchkeys.webp'
+import c01Timeshare from './assets/eras/c01-timeshare.webp'
+import c02Pdp11 from './assets/eras/c02-pdp11.webp'
+import c03Terminal from './assets/eras/c03-terminal.webp'
+import c04Aicli from './assets/eras/c04-aicli.webp'
+import g01Sketchpad from './assets/eras/g01-sketchpad.webp'
+import g02Lightpen from './assets/eras/g02-lightpen.webp'
+import g03Mouse from './assets/eras/g03-mouse.webp'
+import g04Inkscape from './assets/eras/g04-inkscape.webp'
+import p01Star from './assets/eras/p01-star.webp'
+import p02Win95 from './assets/eras/p02-win95.webp'
+import p03Files from './assets/eras/p03-files.webp'
+import p04Plasma from './assets/eras/p04-plasma.webp'
+import w01Firstweb from './assets/eras/w01-firstweb.webp'
+import w02Netscape from './assets/eras/w02-netscape.webp'
+import w03Firefox from './assets/eras/w03-firefox.webp'
+import w04Serp from './assets/eras/w04-serp.webp'
+import t01Ipad from './assets/eras/t01-ipad.webp'
+import t02Voicememos from './assets/eras/t02-voicememos.webp'
+import t03Homescreen from './assets/eras/t03-homescreen.webp'
+import t04Scroll from './assets/eras/t04-scroll.webp'
+import f01Win8 from './assets/eras/f01-win8.webp'
+import f02Ios7 from './assets/eras/f02-ios7.webp'
+import f03Settings from './assets/eras/f03-settings.webp'
+import f04Wikipedia from './assets/eras/f04-wikipedia.webp'
+import s01Keylines from './assets/eras/s01-keylines.webp'
+import s02Carbonkit from './assets/eras/s02-carbonkit.webp'
+import s03Figma from './assets/eras/s03-figma.webp'
+import s04Tokens from './assets/eras/s04-tokens.webp'
+import r01Light from './assets/eras/r01-light.webp'
+import r02Dark from './assets/eras/r02-dark.webp'
+import r03Appearance from './assets/eras/r03-appearance.webp'
+import r04Liquidglass from './assets/eras/r04-liquidglass.webp'
+import n01Visionpro from './assets/eras/n01-visionpro.webp'
+import n02Chatgpt23 from './assets/eras/n02-chatgpt23.webp'
+import n03Gemini from './assets/eras/n03-gemini.webp'
+import n04Chatnow from './assets/eras/n04-chatnow.webp'
+
 /* ============================================================
    STOPS — the 10-stop homepage timeline ("the main event").
    Each stop: big (year range), cursive (movement / evocative label),
@@ -190,8 +233,12 @@ export const ERA_PAGES = {
     ],
     gallery: [
       { img: a01Punchcard, cap: 'A Census Bureau clerk works a Hollerith pantograph punch in about 1940, keying a population card by hand, one hole at a time, so that a machine could later read what she had recorded.', credit: 'U.S. Bureau of the Census, via the U.S. National Archives (NARA 513295), public domain' },
-      { img: 'https://images.unsplash.com/photo-1523966211575-eb4a01e7dd51?auto=format&fit=crop&w=1400&q=60', cap: 'The telephone: for most people, the first machine they talked through.' },
-      { img: 'https://images.unsplash.com/photo-1453928582365-b6ad33cbcf64?auto=format&fit=crop&w=1400&q=60', cap: 'Dials, hands, and bells: feedback you could hear and feel.' },
+      { img: b01Switchboard, cap: 'Signal Corps operators at a plugboard switchboard in France in 1919, patching one caller through to another with cords and jacks, because for decades a connection was a thing a person made by hand.', credit: 'U.S. Army Signal Corps, 1919, public domain' },
+      { img: b02Keypunch, cap: 'A floor of Census Bureau keypunch operators in 1940, each one turning somebody’s written answers into holes a machine could read, which was the job before the job was called software.', credit: 'U.S. Census Bureau, via the U.S. National Archives, public domain' },
+    ],
+    now: [
+      { img: b03Keyboard, cap: 'A keyboard sold today still carries the letter order Christopher Latham Sholes settled on for a mechanical typewriter in the 1870s, so the top row reads Q W E R T Y a century and a half later.', credit: 'Photo: Fletcher, CC BY 4.0, via Wikimedia Commons' },
+      { img: b04Touchkeys, cap: 'The same letters again, now on glass with no moving parts at all, which means a layout arranged around metal typebars is the reason your thumbs know where to go.', credit: 'Photo: Jim Heaphy, CC BY-SA 3.0, via Wikimedia Commons. Keyboard software © Google' },
     ],
     sources: [
       { label: 'Computer History Museum: Punched cards control Jacquard loom', url: 'https://www.computerhistory.org/storageengine/punched-cards-control-jacquard-loom/' },
@@ -237,8 +284,12 @@ export const ERA_PAGES = {
     ],
     gallery: [
       { img: a02Vt100, cap: 'A DEC VT100 wired to a PDP-11, mid-session, with the prompt sitting at the head of each typed line exactly the way every command line has done since.', credit: 'Photo: Autopilot, CC BY-SA 3.0, via Wikimedia Commons' },
-      { img: 'https://images.pexels.com/photos/9951077/pexels-photo-9951077.jpeg?auto=compress&cs=tinysrgb&w=1400', cap: 'Green phosphor: the colour of computing for two decades.' },
-      { img: 'https://images.pexels.com/photos/37787963/pexels-photo-37787963.jpeg?auto=compress&cs=tinysrgb&w=1400', cap: 'The keyboard inherits everything: the terminal made typing the whole interface.' },
+      { img: c01Timeshare, cap: 'A newly installed time-sharing terminal at a Minneapolis school in 1970, one person typing while the other watches the paper roll out, with the telephone that carried the line sitting beside the keyboard.', credit: 'Hennepin County Library, via the Minnesota Digital Library and DPLA, no known copyright' },
+      { img: c02Pdp11, cap: 'A technician at a DEC PDP-11/34 in 1978, a printing terminal on one side of him and a video terminal on the other, both of them waiting for a typed line.', credit: 'U.S. Army Natick Soldier Systems Center, via Digital Commonwealth, public domain' },
+    ],
+    now: [
+      { img: c03Terminal, cap: 'A terminal window today, running a command and printing the answer underneath, with the cursor already blinking on a fresh line waiting for whatever you want to say next.', credit: 'Screenshot: GNOME Terminal, The GNOME Project, GPLv3' },
+      { img: c04Aicli, cap: 'An assistant answering the typed line “Explain this code base to me” inside an ordinary terminal, which is the same ask-and-answer loop as 1970, except the language you type in is now English.', credit: 'Screenshot: OpenAI Codex CLI, Apache License 2.0. Interface © OpenAI' },
     ],
     sources: [
       { label: 'ACM A.M. Turing Award: Fernando J. Corbató, 1990', url: 'https://amturing.acm.org/award_winners/corbato_1009471.cfm' },
@@ -279,7 +330,12 @@ export const ERA_PAGES = {
     ],
     gallery: [
       { img: a03Alto, cap: 'A Xerox Alto, the 1973 machine that put a bitmapped display, a keyboard and a three-button mouse on one desk, photographed against a wall of the Smalltalk source that ran on it.', credit: 'Photo: Maksym Kozlenko, CC BY-SA 4.0, via Wikimedia Commons' },
-      { img: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1400&q=60', cap: 'Phosphor and vectors: what screens looked like before the bitmap won.' },
+      { img: g01Sketchpad, cap: 'Ivan Sutherland at the TX-2 console in 1963, a light pen in his hand and a drawing glowing on the round screen, touching the picture itself rather than typing a command about it.', credit: 'Ivan Sutherland, Sketchpad dissertation, 1963, CC BY-SA 3.0, via Wikimedia Commons' },
+      { img: g02Lightpen, cap: 'A light pen held against an IBM 2250 at Brown University in 1969, picking a line out of a document by pointing straight at it, because on this machine the screen was a thing you touched.', credit: 'Photo: Greg Lloyd, 1969, CC BY-SA 4.0, via Wikimedia Commons' },
+    ],
+    now: [
+      { img: g03Mouse, cap: 'A hand resting on an ordinary mouse, fingers falling into the same grip Engelbart’s wooden block asked for in 1964, a gesture so unremarkable now that almost nobody thinks of it as an invention.', credit: 'Photo: Nenad Stojkovic, CC BY 2.0, via Wikimedia Commons' },
+      { img: g04Inkscape, cap: 'A vector object on a design canvas with its handles showing, which is Sketchpad’s argument carried forward, that you change a picture by pointing at the picture.', credit: 'Screenshot: Inkscape, CC BY-SA 3.0, via Wikimedia Commons' },
     ],
     sources: [
       { label: 'Computer History Museum: the remarkable Ivan Sutherland', url: 'https://computerhistory.org/blog/the-remarkable-ivan-sutherland/' },
@@ -322,7 +378,12 @@ export const ERA_PAGES = {
     ],
     gallery: [
       { img: a04Star, cap: 'The Xerox Star 8010 desktop, with windows, a scroll bar, and In, Out, File and Printer drawn along the bottom as icons you could point at, four years before most people saw a mouse.', credit: 'Screen photo from the DigiBarn Computer Museum collection, CC0. Xerox Star interface © Xerox' },
-      { img: 'https://images.pexels.com/photos/13570135/pexels-photo-13570135.jpeg?auto=compress&cs=tinysrgb&w=1400', cap: 'The machine as object of desire: industrial design becomes part of the interface.' },
+      { img: p01Star, cap: 'A real Xerox Star screen, with folders labelled Mail Received and Mail Sent, an appointment book beside the phone list, and an out basket and a printer along the bottom, because the screen was meant to look like the desk you already knew.', credit: 'Photo: J R, CC BY 2.0, via Wikimedia Commons. Interface © Xerox' },
+      { img: p02Win95, cap: 'Windows 95 with the Start menu open and the Recycle Bin parked in the corner, every icon labelled in words, so that using a computer became a matter of looking rather than remembering.', credit: 'Screenshot via Wikimedia Commons. Interface © Microsoft' },
+    ],
+    now: [
+      { img: p03Files, cap: 'Forty years on the room is unchanged, with Documents and Downloads and Pictures still drawn as folders, Trash still waiting in the sidebar, and two windows overlapping the way paper does on a desk.', credit: 'Screenshot: GNOME Files on Debian, GPLv2+, via Wikimedia Commons' },
+      { img: p04Plasma, cap: 'A launcher opening from the bottom left corner and a row of running programs along the foot of the screen, which is the arrangement Windows 95 shipped in 1995 and nobody has found a reason to abandon since.', credit: 'Screenshot: KDE Plasma 6, KDE Community, GPL, via Wikimedia Commons' },
     ],
     sources: [
       { label: 'Bruce Horn: On Xerox, Apple and progress (folklore.org)', url: 'https://folklore.org/On_Xerox,_Apple_and_Progress.html' },
@@ -365,8 +426,12 @@ export const ERA_PAGES = {
     ],
     gallery: [
       { img: a05Google1998, cap: 'The Google homepage as it stood in December 1998, still carrying a BETA mark, one text box and two buttons in a field of white, while every rival portal was a wall of links.', credit: 'Screenshot via the Internet Archive. Google homepage © Google' },
-      { img: 'https://images.pexels.com/photos/17489151/pexels-photo-17489151.jpeg?auto=compress&cs=tinysrgb&w=1400', cap: 'The web has a body: it lives in racks like these.' },
-      { img: 'https://images.pexels.com/photos/6466141/pexels-photo-6466141.jpeg?auto=compress&cs=tinysrgb&w=1400', cap: 'Every link resolves to a machine humming in a room like this one.' },
+      { img: w01Firstweb, cap: 'The WorldWideWeb browser showing the very first website, where the underlined words are the whole interface and following one of them is the entire interaction.', credit: 'CERN, public domain, rendered by CERN’s own browser emulator' },
+      { img: w02Netscape, cap: 'Netscape Navigator in the middle nineties, Back and Forward at the far left, a location field running the width beneath them, and links that are blue and underlined and completely honest about being clickable.', credit: 'Screenshot: Indolering, CC0, via Wikimedia Commons. Interface © Netscape Communications' },
+    ],
+    now: [
+      { img: w03Firefox, cap: 'A browser in 2026, and the arrangement has not moved, with a back arrow at the far left, an address bar showing exactly where you are, and a page that is still mostly blue links waiting to be followed.', credit: 'Screenshot: VulcanSphere, via Wikimedia Commons. Firefox by Mozilla, MPL 2.0' },
+      { img: w04Serp, cap: 'A search results page today, which once you strip the styling away is a ranked list of links with the address printed under each one, the same object Berners-Lee put on a screen in 1990.', credit: 'Screenshot: Fabriemo, CC0, via Wikimedia Commons. Interface © Brave Software' },
     ],
     sources: [
       { label: 'CERN: a short history of the web', url: 'https://home.cern/science/computing/the-birth-of-the-web/short-history-web/' },
@@ -409,8 +474,12 @@ export const ERA_PAGES = {
     ],
     gallery: [
       { img: a06Iphone, cap: 'An original iPhone in July 2007, two weeks after it went on sale, running Notes on its yellow legal-pad paper above a glossy keyboard, which is skeuomorphism at full volume.', credit: 'Photo: Nick Richards, CC BY-SA 2.0. iPhone interface © Apple' },
-      { img: 'https://images.pexels.com/photos/365194/pexels-photo-365194.jpeg?auto=compress&cs=tinysrgb&w=1400', cap: 'The home screen grid: apps as objects, arranged like belongings.' },
-      { img: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=1400&q=60', cap: 'One hand, one thumb: the posture the whole industry redesigned itself around.' },
+      { img: t01Ipad, cap: 'A finger drags a card across the green felt of a solitaire game on an iPad in 2010, and there is nothing in between, no cursor and no pointer, just a hand moving something that is pretending to be a real card.', credit: 'Photo: bark, CC BY 2.0, via Wikimedia Commons. Interface © Apple' },
+      { img: t02Voicememos, cap: 'Apple’s Voice Memos gave the whole screen over to a chrome studio microphone and a swinging meter, on the theory that if software looked like an object you had already handled, nobody would need teaching.', credit: 'Photo: James Cridland, 2009, CC BY 2.0. Interface © Apple' },
+    ],
+    now: [
+      { img: t03Homescreen, cap: 'A phone held one handed today, apps arranged as a grid of fat rounded squares, because the fingertip never got any smaller even after all the leather and the felt were thrown out.', credit: 'Photo: Elena Rossini, CC BY-SA 4.0, via Wikimedia Commons' },
+      { img: t04Scroll, cap: 'A finger scrolls a list of stories on a phone in the dark, and nobody calls this a gesture any more, because it is simply how reading works now.', credit: 'Photo: Japanexperterna.se, CC BY-SA 2.0, via Wikimedia Commons' },
     ],
     sources: [
       { label: 'Apple Newsroom: the App Store turns 10', url: 'https://www.apple.com/newsroom/2018/07/app-store-turns-10/' },
@@ -453,8 +522,12 @@ export const ERA_PAGES = {
     ],
     gallery: [
       { img: a07Wp7, cap: 'Microsoft’s own launch image for Windows Phone 7, showing the Metro start screen as a grid of flat coloured live tiles, three years before Apple flattened iOS.', credit: 'Image: Microsoft Sweden, CC BY 2.0. Windows Phone interface © Microsoft' },
-      { img: 'https://images.pexels.com/photos/3850263/pexels-photo-3850263.jpeg?auto=compress&cs=tinysrgb&w=1400', cap: 'After the diet: colour and type doing all the work.' },
-      { img: 'https://images.unsplash.com/photo-1557683316-973673baf926?auto=format&fit=crop&w=1400&q=60', cap: 'The gradient survived, barely: as a backdrop, not a button.' },
+      { img: f01Win8, cap: 'Laptops on a demo table in a Microsoft store in November 2012, their screens filled edge to edge with the Windows 8 start screen, where flat colour and plain white type have taken over every job that bevels and shadows used to do.', credit: 'Photo: Raysonho, CC0, via Wikimedia Commons. Interface © Microsoft' },
+      { img: f02Ios7, cap: 'The Settings app in iOS 7, with the leather and the linen and the glassy buttons all stripped out, leaving hairline rules, flat colour and blue text that you simply had to know was tappable.', credit: 'Screenshot via Wikimedia Commons. Interface © Apple' },
+    ],
+    now: [
+      { img: f03Settings, cap: 'A settings screen in 2025, running the flat argument a decade on and winning it, with plain colour fields, a thin sans serif, a great deal of white space and not one bevel anywhere.', credit: 'Screenshot: Nathan Hadley, CC BY-SA 4.0. GNOME Settings, The GNOME Project' },
+      { img: f04Wikipedia, cap: 'Wikipedia today, read by billions of people, built out of nothing but white space, hairline rules and blue text, with the whole main menu folded away behind three stacked lines in the corner.', credit: 'Screenshot: AHollender (WMF), CC BY-SA 4.0, via Wikimedia Commons' },
     ],
     sources: [
       { label: 'Wikipedia: Metro (design language)', url: 'https://en.wikipedia.org/wiki/Metro_(design_language)' },
@@ -498,8 +571,12 @@ export const ERA_PAGES = {
     ],
     gallery: [
       { img: a08Elevation, cap: 'The elevation chart from Google’s original Material specification, plotting every component from the switch resting at one unit up to the dialog floating at twenty-four, which is what a design language looks like once it becomes a measured system.', credit: 'Google, Material Design guidelines, Apache License 2.0' },
-      { img: 'https://images.pexels.com/photos/4258830/pexels-photo-4258830.jpeg?auto=compress&cs=tinysrgb&w=1400', cap: 'Layers with opinions: every surface at its own elevation.' },
-      { img: 'https://images.unsplash.com/photo-1557682250-33bd709cbe85?auto=format&fit=crop&w=1400&q=60', cap: 'The system palette: one bold accent doing a lot of governed work.' },
+      { img: s01Keylines, cap: 'A layout page from the original Material spec, with keylines, margin bands and numbered measurements laid over a real screen, which is what happens when a look becomes a set of rules somebody else has to follow.', credit: 'Google, Material Design guidelines, Apache License 2.0' },
+      { img: s02Carbonkit, cap: 'IBM’s Carbon system installed as a symbol library in 2018, where a designer inserts a button by choosing it from a menu instead of drawing one, which is the moment the deliverable stopped being a picture.', credit: 'IBM Carbon Design System documentation, Apache License 2.0' },
+    ],
+    now: [
+      { img: s03Figma, cap: 'The same system today, attached to a design file alongside IBM’s colour, pictogram and icon libraries, so the components arrive by subscription and update themselves whenever the system does.', credit: 'IBM Carbon Design System documentation, Apache License 2.0' },
+      { img: s04Tokens, cap: 'A component in a current Android app, annotated not with pixel measurements but with token names, which is what a spec looks like once the rules have become variables the code can read.', credit: 'Google, Android developer documentation, Apache License 2.0' },
     ],
     sources: [
       { label: 'Wikipedia: Material Design', url: 'https://en.wikipedia.org/wiki/Material_Design' },
@@ -541,8 +618,12 @@ export const ERA_PAGES = {
     ],
     gallery: [
       { img: a09Bigsur, cap: 'macOS Big Sur in 2020, with Maps, Safari and Messages layered as translucent panels and Control Center frosted at the corner, twenty years after Aqua first made pixels look wet.', credit: 'Screenshot: Apple Newsroom. macOS interface © Apple' },
-      { img: 'https://images.pexels.com/photos/36810858/pexels-photo-36810858.jpeg?auto=compress&cs=tinysrgb&w=1400', cap: 'Translucency with structure: panels you can almost see through.' },
-      { img: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1400&q=60', cap: 'The surface argument: iridescence, depth, and light as decoration again.' },
+      { img: r01Light, cap: 'A file manager in 2020 in its light theme, an ordinary window doing ordinary work, and worth looking at closely because the next picture is the same window.', credit: 'Screenshot: System76, Pop!_OS 20.04, GPLv2+, via Wikimedia Commons' },
+      { img: r02Dark, cap: 'The same window, same version, same folder, switched to dark, which by 2020 was all that changing the entire look of a system took, because the colours lived in a theme rather than in each screen.', credit: 'Screenshot: System76, Pop!_OS 20.04, GPLv2+, via Wikimedia Commons' },
+    ],
+    now: [
+      { img: r03Appearance, cap: 'An appearance setting in 2026 with light and dark sitting side by side as a choice, which is where the whole argument landed, appearance as something you pick rather than something the system decides for you.', credit: 'Screenshot: Canonical, Ubuntu 26.04 LTS, GPLv2+, via Wikimedia Commons' },
+      { img: r04Liquidglass, cap: 'Apple’s Liquid Glass redesign, in which the frosted panels that were a passing trend in 2020 have become the material the entire system is made of.', credit: 'Apple Inc., macOS Tahoe 26, via Apple Newsroom' },
     ],
     sources: [
       { label: 'Apple Newsroom: macOS Mojave introduces dark mode, 2018', url: 'https://www.apple.com/newsroom/2018/09/macos-mojave-is-available-today/' },
@@ -584,8 +665,12 @@ export const ERA_PAGES = {
     ],
     gallery: [
       { img: a10Echo, cap: 'An Amazon Echo listening, its light ring lit, which is the entire interface: no screen and no cursor, just a glowing edge telling you the machine is paying attention.', credit: 'Photo: Smart Home Perfected, CC BY 2.0' },
-      { img: 'https://images.pexels.com/photos/5380589/pexels-photo-5380589.jpeg?auto=compress&cs=tinysrgb&w=1400', cap: 'Green text again: the conversation returns, this time with the machine answering fluently.' },
-      { img: 'https://images.pexels.com/photos/14309813/pexels-photo-14309813.jpeg?auto=compress&cs=tinysrgb&w=1400', cap: 'Ambient computing: devices designed to be spoken to, not looked at.' },
+      { img: n01Visionpro, cap: 'A man wearing an Apple Vision Pro in 2024, one hand raised in the pinch that Apple made the click while his eyes do the pointing, which is the desktop metaphor unpacked into the room around him.', credit: 'Photo: Ramsey Cardy, Collision via Sportsfile, CC BY 2.0, via Wikimedia Commons' },
+      { img: n02Chatgpt23, cap: 'ChatGPT in February 2023, with Free Research Preview still printed along the bottom of a screen that is otherwise nothing but a question, an answer, and an empty box waiting for the next one.', credit: 'Screenshot: Pollema, CC BY-SA 4.0, via Wikimedia Commons. Interface © OpenAI' },
+    ],
+    now: [
+      { img: n03Gemini, cap: 'An assistant in 2026 with the whole window given over to one line of invitation and one empty field beneath it, which is the newest interface on earth asking what a teletype asked in 1964.', credit: 'Screenshot via Wikimedia Commons. Interface © Google' },
+      { img: n04Chatnow, cap: 'A conversation with a machine that answers in sentences, which is where half a century of pointing and clicking arrives, back at a blinking line and a question.', credit: 'Screenshot via Wikimedia Commons. Interface © OpenAI' },
     ],
     sources: [
       { label: 'SRI: the origins of Siri', url: 'https://www.sri.com/hoi/siri/' },

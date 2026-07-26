@@ -5,6 +5,25 @@ import gsap from 'gsap'
 import { STOPS, ERA_PAGES } from './data.js'
 import { takeMorph } from './morph.js'
 
+// a side-by-side pair of captioned figures, used twice per era: once for the
+// era in use, once for what it turned into
+function Pair({ figs }) {
+  if (!figs?.length) return null
+  return (
+    <div className="ep-gallery">
+      {figs.map((g, i) => (
+        <figure className="ep-fig ep-fig--tight" key={i}>
+          <img src={g.img} alt={g.cap} loading="lazy" />
+          <figcaption>
+            {g.cap}
+            {g.credit && <span className="ep-credit">{g.credit}</span>}
+          </figcaption>
+        </figure>
+      ))}
+    </div>
+  )
+}
+
 // Dedicated era pages (/era/:id) — modern editorial: hero image, numbered
 // sections, figures, quote, sources, prev/next. Navigation direction drives
 // the transition: next slides the page up, previous slides it down.
@@ -133,14 +152,9 @@ export default function EraPage() {
             {page.ui.map((p, i) => <p key={i}>{p}</p>)}
           </section>
 
-          <div className="ep-gallery">
-            {page.gallery.slice(1).map((g, i) => (
-              <figure className="ep-fig ep-fig--tight" key={i}>
-                <img src={g.img} alt={g.cap} loading="lazy" />
-                <figcaption>{g.cap}</figcaption>
-              </figure>
-            ))}
-          </div>
+          {/* the era in use: what this interface actually looked like in front
+              of the people who had to live with it */}
+          <Pair figs={page.gallery.slice(1)} />
 
           <section className="ep-sec">
             <h2><b>04</b>What survived</h2>
@@ -159,6 +173,15 @@ export default function EraPage() {
                 <Link to={`/era/${page.left.thread.to}`}>{page.left.thread.text}{' →'}</Link>
               </p>
             </section>
+          )}
+
+          {/* and where it ended up: the same idea running on something you used
+              today, which is the site's whole argument in two frames */}
+          {page.now && (
+            <>
+              <p className="ep-nowlabel">Where it ended up</p>
+              <Pair figs={page.now} />
+            </>
           )}
         </>
       ) : (
