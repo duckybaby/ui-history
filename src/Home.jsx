@@ -5,7 +5,6 @@ import {
 } from 'react-icons/fa6'
 import Timeline from './Timeline.jsx'
 import Manifesto from './Manifesto.jsx'
-import Saver from './Saver.jsx'
 import logo from './assets/logo.svg'
 import illustration from './assets/illustration.svg'
 
@@ -73,9 +72,8 @@ export default function Home() {
       <Timeline />
 
       {/* ============ SCREENSAVER (the resolution box) ============
-          Parked while we finish the era-page review: marks are ~80% and need
-          a fresh-eyes polish pass. Re-enable by uncommenting. */}
-      {/* <Saver /> */}
+          Parked: the era marks are ~80% and need a fresh-eyes polish pass.
+          Re-enable with `import Saver from './Saver.jsx'` + <Saver /> here. */}
     </>
   )
 }

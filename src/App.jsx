@@ -1,6 +1,8 @@
 import { useEffect } from 'react'
 import { Routes, Route, useLocation } from 'react-router-dom'
 import { useLenis } from 'lenis/react'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Home from './Home.jsx'
 import EraPage from './EraPage.jsx'
 import { recallScroll } from './morph.js'
@@ -48,9 +50,31 @@ function ScrollToTop() {
   return null
 }
 
+// one frame pipeline: gsap.ticker drives Lenis, so the order every frame is
+// lenis scroll → ScrollTrigger.update → tween writes → composite. lagSmoothing
+// off because it fights scrub (it would pause tweens after a dropped frame).
+// The ONE ScrollTrigger.update subscription lives here — per-component copies
+// meant the scrub math ran twice per frame.
+function LenisDriver() {
+  const lenis = useLenis()
+  useEffect(() => {
+    if (!lenis) return
+    gsap.ticker.lagSmoothing(0)
+    const drive = (time) => lenis.raf(time * 1000)
+    gsap.ticker.add(drive)
+    lenis.on('scroll', ScrollTrigger.update)
+    return () => {
+      gsap.ticker.remove(drive)
+      lenis.off('scroll', ScrollTrigger.update)
+    }
+  }, [lenis])
+  return null
+}
+
 export default function App() {
   return (
     <>
+      <LenisDriver />
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />

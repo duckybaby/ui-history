@@ -15,13 +15,13 @@ gsap.registerPlugin(ScrollTrigger)
 // bottom→top and each slides left at a different speed. A fixed purple
 // progress bar (glowing leading edge) lives only inside the eras section.
 const repeat = (s, n) => Array.from({ length: n }, () => s).join('  .  ')
-// ONE curve family. The seam clip and the marquee arcs use the same quad —
-// endpoints AT the viewport edges (x:0→1440) — so their curvature is identical
-// on screen. Sag reduced to 120 units (was 205, too deep).
-const SAG = 120 / 1440
-// panels show just the first two sentences; the full text moves to the inner
-// era screens later
-const short = (text) => text.split('. ').slice(0, 2).join('. ').replace(/\.?$/, '.')
+// Flat ribbons: font sizes and travel in vw, matching the old SVG (150px and
+// 81px on a 1440 viewBox; 1000 and 1700 units of slide).
+const BOLD_VW = 10.4, CUR_VW = 5.6
+const BOLD_TRAVEL_VW = 69, CUR_TRAVEL_VW = 118
+// enough repeats to cover the viewport plus the full slide, per label length
+const flatRepeats = (str, fontVW, travelVW) =>
+  Math.max(2, Math.ceil((100 + travelVW + 30) / ((str.length + 5) * fontVW * 0.5)))
 
 export default function Timeline() {
   const sectionRef = useRef(null)
@@ -32,7 +32,7 @@ export default function Timeline() {
   // offset and all) GROWS to swallow the viewport while the homepage stays
   // alive beneath it — nothing ever flashes grey. Only when the image owns
   // the screen do we navigate; the era page then settles around it.
-  const explore = (id) => (e) => {
+  const explore = (id, i) => (e) => {
     e.preventDefault()
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     const bg = e.currentTarget.closest('.era')?.querySelector('.era-bg')
@@ -43,8 +43,7 @@ export default function Timeline() {
 
     lenis?.stop()
     const r = bg.getBoundingClientRect()
-    const first = bg.style.clipPath === 'none' || !bg.style.clipPath
-    const sag0 = first ? 0 : window.innerWidth * SAG
+    const first = i === 0
 
     // clone: container (clips) + img (with the live parallax offset) + two
     // shades (panel gradient fading out, hero gradient fading in)
@@ -73,8 +72,7 @@ export default function Timeline() {
     clone.append(ci, shadeA, shadeB)
     document.body.appendChild(clone)
 
-    // one manually-driven tween: rect grows to the viewport while the seam
-    // curve flattens in step (clip-path coords must track the live size)
+    // one manually-driven tween: the rect grows to fill the viewport
     const p = { t: 0 }
     gsap.to(p, {
       t: 1, duration: 0.7, ease: 'power3.inOut',
@@ -83,9 +81,7 @@ export default function Timeline() {
         const L = r.left * (1 - t), T = r.top * (1 - t)
         const W = r.width + (window.innerWidth - r.width) * t
         const H = r.height + (window.innerHeight - r.height) * t
-        const s = sag0 * (1 - t)
         Object.assign(clone.style, { left: `${L}px`, top: `${T}px`, width: `${W}px`, height: `${H}px` })
-        clone.style.clipPath = `path('M 0 0 Q ${W / 2} ${2 * s} ${W} 0 L ${W} ${H} L 0 ${H} Z')`
         shadeB.style.opacity = t
       },
       onComplete: () => {
@@ -97,56 +93,62 @@ export default function Timeline() {
   }
   const reduce = typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
-  // curved seams: clip each era's BACKGROUND layer (not the panel itself, so
-  // the ribbon can spill over the previous era) with the same valley quad as
-  // the marquee arcs. clip-path path() is px-based, so recompute on resize.
-  useEffect(() => {
-    const bgs = sectionRef.current.querySelectorAll('.era-bg')
-    const setClips = () => {
-      const w = window.innerWidth
-      const s = w * SAG
-      bgs.forEach((bg, idx) => {
-        if (idx === 0) { bg.style.clipPath = 'none'; return }   // first era: flat top
-        const h = bg.offsetHeight
-        bg.style.clipPath = `path('M 0 0 Q ${w / 2} ${2 * s} ${w} 0 L ${w} ${h} L 0 ${h} Z')`
-      })
-    }
-    setClips()
-    window.addEventListener('resize', setClips)
-    return () => window.removeEventListener('resize', setClips)
-  }, [])
+  // SEAMS ARE FLAT. Every curved variant (clip-path:path(), then a
+  // border-radius dome) put the parallaxing photo inside a clipped box, which
+  // costs raster work every frame. The seam-shade band hides the straight joint
+  // where two photos meet, and the motion carries the transition instead.
 
   useEffect(() => {
     if (reduce) return
     const ctx = gsap.context(() => {
       gsap.utils.toArray('.era').forEach((era) => {
-        const tpBold = era.querySelector('.tp-bold')
-        const tpCursive = era.querySelector('.tp-cursive')
         const bg = era.querySelector('.era-bg img')
-        const st = { trigger: era, start: 'top bottom', end: 'bottom top', scrub: true }
+        // scrub with a small lag: interpolating toward the scroll position (instead
+        // of hard-syncing every wheel tick) is what keeps the era stretch smooth
+        const st = { trigger: era, start: 'top bottom', end: 'bottom top', scrub: 0.7 }
         // aggressive photo parallax — the speed difference sells the depth
         if (bg) gsap.fromTo(bg, { yPercent: -14 }, { yPercent: 14, ease: 'none', scrollTrigger: st })
-        // and a whisper of vertical drift on the ribbon (stays glued to the
-        // seam zone, just breathes with the scroll)
-        const inner = era.querySelector('.era-marquee-inner')
-        if (inner) gsap.fromTo(inner, { yPercent: -6 }, { yPercent: 6, ease: 'none', scrollTrigger: st })
         // one ribbon at a time: fade this era's ribbon out as it exits the top,
         // so it's gone before the next era's ribbon peeks in at the bottom
         const mq = era.querySelector('.era-marquee')
         if (mq) gsap.fromTo(mq, { autoAlpha: 1 }, {
           autoAlpha: 0, ease: 'none',
-          scrollTrigger: { trigger: era, start: 'top top', end: 'top -18%', scrub: true },
+          scrollTrigger: { trigger: era, start: 'top top', end: 'top -18%', scrub: 0.4 },
         })
-        // ribbons slide horizontally on scroll — same direction, two speeds
-        gsap.fromTo(tpBold, { attr: { startOffset: 0 } }, { attr: { startOffset: -1000 }, ease: 'none', scrollTrigger: st })
-        gsap.fromTo(tpCursive, { attr: { startOffset: 0 } }, { attr: { startOffset: -1700 }, ease: 'none', scrollTrigger: st })
+        // ribbons slide horizontally on scroll — same direction, two speeds.
+        // Function values + invalidateOnRefresh so the travel tracks resizes.
+        const mqBold = era.querySelector('.era-mq-bold')
+        const mqCur = era.querySelector('.era-mq-cur')
+        const slideTo = (el, vw) => {
+          if (!el) return
+          gsap.fromTo(el, { x: 0 }, {
+            x: () => -window.innerWidth * (vw / 100), ease: 'none',
+            scrollTrigger: { ...st, invalidateOnRefresh: true },
+          })
+        }
+        slideTo(mqBold, BOLD_TRAVEL_VW)
+        slideTo(mqCur, CUR_TRAVEL_VW)
+
+        // promote GPU layers only while this era can actually move, and half a
+        // viewport early so the one-time raster happens off-screen. Permanent
+        // promotion of every photo and ribbon makes the compositor evict and
+        // re-raster tiles mid-scroll, which is jank that no main-thread fix
+        // can touch.
+        const movers = [bg, mqBold, mqCur].filter(Boolean)
+        ScrollTrigger.create({
+          trigger: era, start: 'top 150%', end: 'bottom -50%',
+          onToggle: (self) => {
+            movers.forEach((el) => { el.style.willChange = self.isActive ? 'transform' : 'auto' })
+            if (mq) mq.style.willChange = self.isActive ? 'opacity' : 'auto'
+          },
+        })
       })
 
       // progress bar: fills across the whole eras section, visible only inside it
       const bar = sectionRef.current.querySelector('.tl-progressbar')
       const fill = bar.querySelector('.tl-progress-fill')
-      gsap.fromTo(fill, { width: '0%' }, {
-        width: '100%', ease: 'none',
+      gsap.fromTo(fill, { xPercent: -100 }, {
+        xPercent: 0, ease: 'none',
         scrollTrigger: {
           trigger: sectionRef.current, start: 'top top', end: 'bottom bottom', scrub: true,
           onToggle: (self) => gsap.to(bar, { autoAlpha: self.isActive ? 1 : 0, duration: 0.25, overwrite: 'auto' }),
@@ -154,13 +156,8 @@ export default function Timeline() {
       })
     }, sectionRef)
 
-    const onScroll = () => ScrollTrigger.update()
-    if (lenis) lenis.on('scroll', onScroll)
     document.fonts?.ready.then(() => ScrollTrigger.refresh())
-    return () => {
-      if (lenis) lenis.off('scroll', onScroll)
-      ctx.revert()
-    }
+    return () => ctx.revert()
   }, [lenis, reduce])
 
   return (
@@ -170,27 +167,16 @@ export default function Timeline() {
       {STOPS.map((s, i) => (
         <div className={`era ${i % 2 ? 'era--b' : 'era--a'}${i === 0 ? ' era--first' : ''}`} key={s.id}>
           <div className="era-bg" aria-hidden="true">
-            <img src={s.img} alt="" loading={i > 1 ? 'lazy' : 'eager'} />
+            <img src={s.img} alt="" loading={i > 1 ? 'lazy' : 'eager'} decoding="async" />
           </div>
 
           <div className="era-marquee" aria-hidden="true">
-            <div className="era-marquee-inner">
-              <div className="era-seam-shade" />
-              <svg className="era-arc" viewBox="0 0 1440 400" preserveAspectRatio="xMidYMid slice">
-                <defs>
-                  {/* same quad family as the seam clip (sag 120 on 1440), just
-                      offset down so the glyphs hang under the curved edge;
-                      cursive rides ~70 higher, cutting the bold's upper half */}
-                  <path id={`arcBold-${i}`} d="M 0 170 Q 720 410 1440 170" fill="none" />
-                  <path id={`arcCur-${i}`} d="M 0 100 Q 720 340 1440 100" fill="none" />
-                </defs>
-                <text className="era-m-bold">
-                  <textPath className="tp-bold" href={`#arcBold-${i}`} startOffset="0">{repeat(s.title, 14)}</textPath>
-                </text>
-                <text className="era-m-cursive">
-                  <textPath className="tp-cursive" href={`#arcCur-${i}`} startOffset="0">{repeat(s.cursive, 14)}</textPath>
-                </text>
-              </svg>
+            <div className="era-seam-shade" />
+            {/* two straight rows of plain text, slid on translateX at two
+                speeds. One composited layer each, moved but never re-laid-out. */}
+            <div className="era-mq-window">
+              <div className="era-mq era-mq-bold">{repeat(s.title, flatRepeats(s.title, BOLD_VW, BOLD_TRAVEL_VW))}</div>
+              <div className="era-mq era-mq-cur">{repeat(s.cursive, flatRepeats(s.cursive, CUR_VW, CUR_TRAVEL_VW))}</div>
             </div>
           </div>
 
@@ -200,8 +186,8 @@ export default function Timeline() {
               <h3 className="era-title">{s.title}</h3>
             </div>
             <div className="era-r">
-              <p className="era-text">{short(s.content)}</p>
-              <Link to={`/era/${s.id}`} className="btn btn-accent era-btn" onClick={explore(s.id)}>Explore this era</Link>
+              <p className="era-text">{s.content}</p>
+              <Link to={`/era/${s.id}`} className="btn btn-accent era-btn" onClick={explore(s.id, i)}>Explore this era</Link>
             </div>
           </div>
         </div>

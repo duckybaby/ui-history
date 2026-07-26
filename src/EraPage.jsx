@@ -107,7 +107,7 @@ export default function EraPage() {
       {page ? (
         <>
           <section className="ep-sec">
-            <h2><b>01 · Why it matters</b>Why this era is important</h2>
+            <h2><b>01</b>Why it matters</h2>
             {page.why.map((p, i) => <p key={i}>{p}</p>)}
           </section>
 
@@ -117,7 +117,7 @@ export default function EraPage() {
           </figure>
 
           <section className="ep-sec">
-            <h2><b>02 · The contents</b>What this era contained</h2>
+            <h2><b>02</b>What they built</h2>
             <div className="ep-grid">
               {page.contained.map((c, i) => (
                 <div className="ep-card" key={i}><b>{c.t}</b><p>{c.d}</p></div>
@@ -126,7 +126,7 @@ export default function EraPage() {
           </section>
 
           <section className="ep-sec">
-            <h2><b>03 · The interface</b>How you touched it</h2>
+            <h2><b>03</b>How you touched it</h2>
             {page.ui.map((p, i) => <p key={i}>{p}</p>)}
           </section>
 
@@ -140,13 +140,23 @@ export default function EraPage() {
           </div>
 
           <section className="ep-sec">
-            <h2><b>04 · The history it made</b>Notable UIs of this era</h2>
+            <h2><b>04</b>What survived</h2>
             <ol className="ep-notable">
               {page.notable.map((n, i) => (
                 <li key={i}><div><b>{n.t}</b><p>{n.d}</p></div></li>
               ))}
             </ol>
           </section>
+
+          {page.left && (
+            <section className="ep-sec">
+              <h2><b>05</b>What it left you</h2>
+              {page.left.paras.map((p, i) => <p key={i}>{p}</p>)}
+              <p className="ep-thread">
+                <Link to={`/era/${page.left.thread.to}`}>{page.left.thread.text}{' →'}</Link>
+              </p>
+            </section>
+          )}
         </>
       ) : (
         <section className="ep-sec">
@@ -165,7 +175,7 @@ export default function EraPage() {
       {/* ============ SOURCES ============ */}
       {page?.sources && (
         <section className="ep-sec ep-sources">
-          <h2><b>05 · Receipts</b>Sources</h2>
+          <h2><b>06</b>Receipts</h2>
           <ul>
             {page.sources.map((s, i) => (
               <li key={i}><a href={s.url} target="_blank" rel="noreferrer">{s.label}</a></li>

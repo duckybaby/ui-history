@@ -24,8 +24,7 @@ const BLOCKS = [
     indent: 'clamp(30px,8vw,130px)',
     lines: [
       [['It started'], ['without a screen,', 'mf-accent', FaDesktop]],
-      [['and ended in']],
-      [['a conversation.', 'mf-pink', FaMicrophone]],
+      [['and came back to'], ['a conversation.', 'mf-pink', FaMicrophone]],
     ],
   },
   {
@@ -111,14 +110,8 @@ export default function Manifesto() {
       })
     }, ref)
 
-    const onScroll = () => ScrollTrigger.update()
-    if (lenis) lenis.on('scroll', onScroll)
     document.fonts?.ready.then(() => ScrollTrigger.refresh())
-
-    return () => {
-      if (lenis) lenis.off('scroll', onScroll)
-      ctx.revert()
-    }
+    return () => ctx.revert()
   }, [lenis])
 
   return (

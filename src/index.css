@@ -61,7 +61,6 @@ button{font:inherit;cursor:pointer;border:none;background:none;color:inherit;}
 ::selection{background:var(--ink);color:var(--paper);}
 a:focus-visible,button:focus-visible{outline:0.125rem solid var(--accent);outline-offset:0.1875rem;}
 
-.mono{font-family:var(--mono);letter-spacing:.02em;font-weight:400;}
 .eyebrow{font-family:var(--mono);font-size:0.75rem;letter-spacing:.02em;color:var(--ink-3);}
 .eyebrow b{color:var(--accent);font-weight:500;}
 
@@ -69,10 +68,6 @@ a:focus-visible,button:focus-visible{outline:0.125rem solid var(--accent);outlin
   display:inline-flex;align-items:center;gap:0.5625rem;border-radius:62.4375rem;
   font-size:0.9688rem;font-weight:600;padding:1rem 1.75rem;transition:.22s var(--ease);
 }
-.btn-dark,.btn-solid{background:var(--ink);color:var(--paper);}
-.btn-dark:hover,.btn-solid:hover{background:var(--accent);}
-.btn-ghost{border:0.0625rem solid var(--line-2);}
-.btn-ghost:hover{background:var(--paper-2);}
 .btn-accent{background:var(--accent);color:#fff;font-weight:600;}
 .btn-accent:hover{background:var(--accent-2);}
 
@@ -104,7 +99,6 @@ a:focus-visible,button:focus-visible{outline:0.125rem solid var(--accent);outlin
   letter-spacing:-.03em;line-height:1.08;max-width:32ch;margin:0;
 }
 .hero h1 em{font-style:normal;color:var(--ink);font-weight:inherit;}
-.hero h1 .hl{font-weight:700;letter-spacing:-.025em;}
 .hero-chip,.hero-slide{
   display:inline-block;position:relative;width:1.9em;height:.78em;border-radius:62.4375rem;
   overflow:hidden;vertical-align:-.03em;margin:0 .1em;
@@ -113,17 +107,6 @@ a:focus-visible,button:focus-visible{outline:0.125rem solid var(--accent);outlin
 .hero-slide{background:var(--accent-2);}   /* pink */
 .blob-ico{position:absolute;inset:0;display:grid;place-items:center;color:#fff;}
 .blob-ico svg{width:.5em;height:.5em;display:block;}
-.hero-facts{
-  margin:0 auto clamp(2.125rem,5vh,3.5rem);display:flex;flex-wrap:wrap;justify-content:center;
-  gap:clamp(1.375rem,3.6vw,3.625rem);
-}
-.fact{display:flex;flex-direction:column;align-items:center;gap:0.375rem;width:clamp(12.5rem,20vw,16.25rem);}
-.fact .fv{font-size:clamp(1.5rem,2.1vw,1.875rem);font-weight:600;letter-spacing:-.02em;line-height:1;}
-.fact .fl{font-size:clamp(0.8125rem,1.05vw,0.9062rem);font-weight:400;color:var(--ink-2);line-height:1.35;}
-.name-link{color:#2E8B23;font-weight:500;text-decoration:underline;text-underline-offset:0.125rem;text-decoration-thickness:0.0938rem;transition:color .16s;}
-.name-link:hover{color:#256f1c;}
-.hero-cta-row{margin-top:clamp(2rem,4vw,3rem);display:flex;gap:0.75rem;justify-content:center;flex-wrap:wrap;}
-.hero-attr{margin:0 auto clamp(2.125rem,5vh,3.5rem);font-size:0.875rem;color:var(--ink-3);text-align:center;}
 
 /* marquee */
 .marquee-wrap{position:relative;}
@@ -213,8 +196,12 @@ a:focus-visible,button:focus-visible{outline:0.125rem solid var(--accent);outlin
 .era--first{margin-top:0;}
 .era--first .era-marquee{display:none;}
 .era--first .era-bg::after{background:rgba(0,0,0,.1);}   /* no gradient, just a flat 10% darkening pass */
+/* Plain rectangular panels. Every curved-seam variant (clip-path:path(), then
+   a border-radius dome) made the parallaxing photo inside a clipped box, which
+   costs raster work every frame. A straight joint is a plain composited layer,
+   and the seam-shade band below hides where two photos meet. */
 .era-bg{position:absolute;inset:0;overflow:hidden;z-index:0;background:var(--paper-2);}
-.era-bg img{position:absolute;left:0;top:-20%;width:100%;height:140%;object-fit:cover;will-change:transform;}   /* extra height = headroom for the aggressive parallax */
+.era-bg img{position:absolute;left:0;top:-20%;width:100%;height:140%;object-fit:cover;}   /* extra height = headroom for the aggressive parallax; will-change is toggled per-era in JS */
 /* punchier images need a stronger hand: darker throughout, heaviest at the text band */
 .era-bg::after{content:'';position:absolute;inset:0;
   background:linear-gradient(180deg,rgba(17,24,39,.42) 0%,rgba(17,24,39,.3) 45%,rgba(17,24,39,.85) 100%);}
@@ -225,24 +212,27 @@ a:focus-visible,button:focus-visible{outline:0.125rem solid var(--accent);outlin
    glyphs' midline sits ON the curved edge (half over the previous era, half
    over its own), sliding only horizontally */
 .era-marquee{position:absolute;top:-8.16vw;left:0;right:0;overflow:visible;pointer-events:none;z-index:1;}
-.era-marquee-inner{position:relative;width:100%;}
 /* black gradient band behind the ribbon (0 → 1 → 0): hides the hard seam
    between the two background images */
 .era-seam-shade{position:absolute;left:0;right:0;top:-10vw;height:44vw;
   background:linear-gradient(180deg,rgba(0,0,0,0) 0%,rgba(0,0,0,1) 50%,rgba(0,0,0,0) 100%);}
 .era--first .era-seam-shade{display:none;}   /* first seam meets white page, no image joint to hide */
-.era-arc{position:relative;width:100%;height:auto;display:block;overflow:visible;
-  /* letters melt out just before the viewport edge — never chopped mid-glyph */
-  -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 6%,#000 94%,transparent 100%);
-  mask-image:linear-gradient(90deg,transparent 0,#000 6%,#000 94%,transparent 100%);}
-.era-m-bold{font-family:var(--sans);font-weight:800;font-size:150px;letter-spacing:-3px;fill:#fff;}
-.era-m-cursive{font-family:var(--script);font-weight:700;font-size:81px;}
+/* FLAT ribbons. Two straight rows of plain text (no SVG, no textPath, no mask)
+   that slide on translateX at two speeds — the cheapest scroll-linked motion
+   there is: one composited layer per row, moved, never re-laid-out. Sizes match
+   the old SVG exactly (150px and 81px on a 1440 viewBox = 10.4vw and 5.6vw). */
+.era-mq-window{position:relative;height:16vw;overflow:hidden;}
+.era-mq{position:absolute;left:0;white-space:nowrap;line-height:1;}   /* will-change toggled per-era in JS */
+.era-mq-bold{top:2.96vw;font-family:var(--sans);font-weight:800;font-size:10.4vw;letter-spacing:-.02em;color:#fff;}
+.era-mq-cur{top:0.46vw;font-family:var(--script);font-weight:700;font-size:5.6vw;}
 /* bold stays white everywhere; the cursive carries the alternating colour */
-.era--a .era-m-cursive{fill:var(--accent-2);}
-.era--b .era-m-cursive{fill:var(--accent);}
+.era--a .era-mq-cur{color:var(--accent-2);}
+.era--b .era-mq-cur{color:var(--accent);}
 /* progress bar: fixed top border, purple, only while inside the eras section */
-.tl-progressbar{position:fixed;top:0;left:0;right:0;height:0.3125rem;z-index:300;pointer-events:none;opacity:0;visibility:hidden;}
-.tl-progress-fill{position:relative;height:100%;width:0%;
+.tl-progressbar{position:fixed;top:0;left:0;right:0;height:0.3125rem;z-index:300;pointer-events:none;opacity:0;visibility:hidden;overflow:hidden;}
+/* full-width fill slid in with translateX (compositor-only) — animating width
+   forced layout + a blur repaint of the glow tip on every scroll frame */
+.tl-progress-fill{position:relative;height:100%;width:100%;will-change:transform;transform:translateX(-100%);
   background:linear-gradient(90deg,color-mix(in srgb,var(--accent),transparent 45%),var(--accent) 82%);
   border-radius:0 0.1875rem 0.1875rem 0;}
 /* neon-tube leading edge: a soft halo hugging the last stretch of the bar,
@@ -262,8 +252,7 @@ a:focus-visible,button:focus-visible{outline:0.125rem solid var(--accent);outlin
 .era-yr{display:block;font-family:var(--mono);font-size:clamp(0.8125rem,1.2vw,0.9375rem);letter-spacing:.06em;color:rgba(255,255,255,.65);margin-bottom:.5em;font-variant-numeric:tabular-nums;}
 .era-title{font-family:var(--sans);font-weight:800;font-size:clamp(1.875rem,3.8vw,3.75rem);line-height:.95;letter-spacing:-.03em;color:#fff;margin:0;}
 .era-r{max-width:44ch;}
-.era-text{font-family:var(--sans);font-weight:500;font-size:clamp(0.875rem,1.25vw,1.0625rem);line-height:1.5;color:rgba(255,255,255,.85);margin:0;
-  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}   /* hard cap: two lines */
+.era-text{font-family:var(--sans);font-weight:500;font-size:clamp(0.875rem,1.25vw,1.0625rem);line-height:1.5;color:rgba(255,255,255,.85);margin:0;}
 .era-btn{margin-top:1em;}
 
 /* ============================================================ SAVER (the resolution box) */
@@ -423,6 +412,10 @@ a:focus-visible,button:focus-visible{outline:0.125rem solid var(--accent);outlin
 .ep-quote blockquote{max-width:53.75rem;margin:0 auto;font-weight:700;font-style:italic;font-size:clamp(1.375rem,2.6vw,2.25rem);line-height:1.4;letter-spacing:-.01em;}
 .ep-quote cite{display:block;max-width:53.75rem;margin:1.4em auto 0;font-style:normal;font-family:var(--mono);font-size:0.875rem;color:var(--accent-2);}
 /* sources */
+.ep-thread{font-family:var(--mono);font-size:0.875rem;letter-spacing:.02em;margin-top:2em;}
+.ep-thread a{color:var(--accent);text-decoration:underline;text-underline-offset:0.1875rem;transition:color .16s;}
+.ep-thread a:hover{color:var(--ink);}
+
 .ep-sources ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.75em;}
 .ep-sources a{font-size:clamp(0.9375rem,1.25vw,1.0625rem);color:var(--ink-2);text-decoration:underline;text-underline-offset:0.1875rem;transition:color .16s;}
 .ep-sources a:hover{color:var(--accent);}
@@ -437,10 +430,31 @@ a.ep-nav-a:hover{background:var(--paper-2);}
 .ep-nav-a i{display:block;font-style:normal;font-family:var(--mono);font-size:0.8125rem;color:var(--accent);margin-top:.35em;}
 
 /* ============================================================ RESPONSIVE */
+/* Below the 1280 desktop reference the vw-proportional clamps read too small on
+   portrait screens (text scales with width while the screen is mostly height).
+   Boost the display scale so type fills the viewport like it does on desktop. */
+@media(max-width:1080px){
+  .hero h1{font-size:clamp(2.25rem,6.5vw,4.5rem);}
+  .stmt-p{font-size:clamp(1.75rem,5vw,3rem);}
+  .era-title{font-size:clamp(2rem,6vw,3.5rem);}
+  .era-text{font-size:clamp(0.9375rem,1.9vw,1.0625rem);}
+  .ep-hero h1{font-size:clamp(2.5rem,9vw,5.5rem);}
+  .ep-lede{font-size:clamp(1.0625rem,2.2vw,1.3125rem);}
+  .ep-sec h2{font-size:clamp(1.625rem,4.2vw,2.5rem);}
+  .ep-sec p{font-size:clamp(1rem,2vw,1.1875rem);}
+  .marquee-track span{font-size:clamp(1.125rem,2.9vw,1.75rem);}
+}
+@media(max-width:640px){
+  .hero h1{font-size:clamp(2rem,8.5vw,2.75rem);}
+  .stmt-p{font-size:clamp(1.5rem,7vw,2.25rem);}
+  .era-title{font-size:clamp(1.875rem,9vw,2.75rem);}
+  .era-text{font-size:1rem;}
+  .ep-hero h1{font-size:clamp(2.25rem,10.5vw,3.25rem);}
+  .ep-lede{font-size:1.0625rem;}
+}
 @media(max-width:760px){ .hero h1 .h1-br{display:none;} }
 @media(max-width:680px){
   .hero{min-height:100svh;}
-  .hero-facts{flex-direction:column;gap:1rem;}
 }
 /* reduced motion: JS skips the scroll-driven marquee/parallax entirely, leaving
    the curved marquees static. The era panels are natural full-page sections. */
@@ -452,7 +466,6 @@ a.ep-nav-a:hover{background:var(--paper-2);}
 /* ============================================================ BRAND DISPLAY
    Tanker on the big type. Single weight (400) — set 400 to avoid faux-bold.
    Placed last so it wins over the per-component font-weights above. */
-.hero-logo,.hero h1,.sec-head h2,.detail h1,.fact .fv{
+.hero-logo,.hero h1{
   font-family:var(--display);font-weight:400;letter-spacing:-.02em;
 }
-.hero h1 .hl{color:var(--accent);font-weight:400;}   /* purple highlight */
