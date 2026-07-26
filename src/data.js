@@ -182,7 +182,7 @@ export const STOPS = [
     cursive: 'Dress It Up Again',
     title: 'The Surface Returns',
     content:
-      'The third act: once design ran on systems, the look became a setting. Dark mode turned into a preference every app suddenly owed you, soft extruded shapes had their moment and mostly failed the contrast test, and heavy frosted panels, quietly building since iOS 7 and Yosemite, were pushed to the front again. Brutalism revolted against all of it, bento boxed everything into tidy grids, and style now changes like the seasons, because the system underneath can absorb it.',
+      'The third act: once design ran on systems, the look became a setting. Dark mode turned into a preference every app suddenly owed you, soft extruded shapes had their moment and mostly failed the contrast test, and heavy frosted panels, building since iOS 7 and Yosemite, were pushed to the front again. Brutalism revolted against all of it, bento boxed everything into tidy grids, and style now changes like the seasons, because the system underneath can absorb it.',
     quote: null,
     look: 'Frosted translucent panels, heavy blur, soft inner shadows, boxed modular grids.',
     image: 'A macOS Big Sur or Windows 11 panel showing the frosted-glass effect, or a clean neumorphism UI sample.',
@@ -194,7 +194,7 @@ export const STOPS = [
     cursive: 'Just Ask',
     title: 'Beyond the Cursor',
     content:
-      'The cursor had been dissolving for a while, ever since Siri in 2011, and then Alexa, made a voice in a room the whole interface. ChatGPT turned a plain text box into a tool for almost anything, and Vision Pro put the screen in the air, driven by your eyes and your hands. Half a century of point-and-click, quietly circling back to where the conversation began: typing words at a machine, and waiting for its answer.',
+      'The cursor had been dissolving for a while, ever since Siri in 2011, and then Alexa, made a voice in a room the whole interface. ChatGPT turned a plain text box into a tool for almost anything, and Vision Pro put the screen in the air, driven by your eyes and your hands. Half a century of point-and-click, circling back to where the conversation began: typing words at a machine, and waiting for its answer.',
     quote: { text: 'The best way to predict the future is to invent it.', who: 'Alan Kay, PARC, 1971' },
     look: 'The screenless and the spatial. A chat field, a voice waveform, windows floating in a room.',
     image: 'The Vision Pro spatial interface, or a clean shot of a conversational UI.',
@@ -215,7 +215,7 @@ export const ERA_PAGES = {
     ],
     contained: [
       { t: 'The punch card', d: 'Jacquard’s loom read woven patterns from punched cards. Babbage planned to feed his Analytical Engine with them in 1837. Hollerith counted the 1890 US Census with them, and his company grew into IBM.' },
-      { t: 'The typewriter', d: 'Christopher Latham Sholes and his partners sold the manufacturing rights to Remington in 1873, and the machine went on sale in 1874 with QWERTY on it. The layout was not designed to slow typists down, which is the most repeated myth in interface history. Historians still argue about what it was actually for, with jammed typebars the usual answer and a strong rival case that it grew out of the needs of telegraph operators taking down Morse.' },
+      { t: 'The typewriter', d: 'Christopher Latham Sholes and his partners sold the manufacturing rights to Remington in 1873, and the machine went on sale in 1874 with QWERTY on it. The layout was not designed to slow typists down, whatever you were told at school. Historians still argue about what it was actually for, with jammed typebars the usual answer and a strong rival case that it grew out of the needs of telegraph operators taking down Morse.' },
       { t: 'The telegraph', d: 'One key, and meaning carried in rhythm. Morse code was the first time people spoke to a machine in the machine’s own language.' },
       { t: 'The switchboard and the dial', d: 'For decades the phone network’s interface was a person, an operator patching cables by hand. Almon Strowger’s automatic exchange and the dial that came with it began handing her work to you in the 1890s, but the job took most of a century to disappear, and operator numbers actually peaked in the 1950s before direct dialling finished them off.' },
       { t: 'The cockpit', d: 'In WWII, trained pilots kept belly-landing B-17s because the landing gear and flap levers were identical and sat side by side, so they raised the wheels when they meant to raise the flaps. Alphonse Chapanis gave the two levers different shapes you could tell apart by touch, and the accidents stopped. He called it designer error rather than pilot error, and human factors, the ancestor of UX, begins here.' },
@@ -253,7 +253,7 @@ export const ERA_PAGES = {
     left: {
       paras: [
         'Take Fitts’s law with you, published in 1954 by a psychologist who had spent the war working out why pilots misread their controls, because it still decides the size of every button you will ever ship. And take QWERTY’s harder lesson, that a rival layout has existed since the 1930s and has never mattered, whatever its merits. When a design fights the user’s muscle memory, the design loses.',
-        'What it cost was the operator. For the better part of a century a human being was the interface, translating your intent into the machine’s language, until automatic exchanges and then direct dialling took the work away. A better interface quietly ended a profession, and it would not be the last time.',
+        'What it cost was the operator. For the better part of a century a human being was the interface, translating your intent into the machine’s language, until automatic exchanges and then direct dialling took the work away. A better interface ended a profession, and it would not be the last time.',
       ],
       thread: { to: 'command-line', text: 'Follow the thread: the punch-card deck becomes the batch job in The Command Line' },
     },
@@ -289,7 +289,7 @@ export const ERA_PAGES = {
     ],
     now: [
       { img: c03Terminal, cap: 'A terminal window today, running a command and printing the answer underneath, with the cursor already blinking on a fresh line waiting for whatever you want to say next.', credit: 'Screenshot: GNOME Terminal, The GNOME Project, GPLv3' },
-      { img: c04Aicli, cap: 'An assistant answering the typed line “Explain this code base to me” inside an ordinary terminal, which is the same ask-and-answer loop as 1970, except the language you type in is now English.', credit: 'Screenshot: OpenAI Codex CLI, Apache License 2.0. Interface © OpenAI' },
+      { img: c04Aicli, cap: 'An assistant answering the typed line “Explain this code base to me” inside an ordinary terminal, the same ask-and-answer loop as 1970, in English.', credit: 'Screenshot: OpenAI Codex CLI, Apache License 2.0. Interface © OpenAI' },
     ],
     sources: [
       { label: 'ACM A.M. Turing Award: Fernando J. Corbató, 1990', url: 'https://amturing.acm.org/award_winners/corbato_1009471.cfm' },
@@ -321,7 +321,7 @@ export const ERA_PAGES = {
     ],
     ui: [
       'The interface became a picture. Instead of remembering a command you pointed at a thing, and the thing responded. Direct manipulation, the idea that you touch what you change, starts in this lab hardware.',
-      'But it was still years from ordinary hands: room-sized budgets, beige lab machines, screens that only researchers ever saw. This era invented the future and then sat on it, which is exactly why the next era happened.',
+      'But it was still years from ordinary hands: room-sized budgets, beige lab machines, screens that only researchers ever saw. This era invented the future and then sat on it, so somebody else got to ship it.',
     ],
     notable: [
       { t: 'Sketchpad, 1963', d: 'Not the first light pen pointed at a screen, since Whirlwind and SAGE operators were doing that in the fifties, but the first time the machine understood the drawing as structure rather than as marks. Interactive graphics, constraints, even object-like instances: all here.' },
@@ -335,7 +335,7 @@ export const ERA_PAGES = {
     ],
     now: [
       { img: g03Mouse, cap: 'A hand resting on an ordinary mouse, fingers falling into the same grip Engelbart’s wooden block asked for in 1964, a gesture so unremarkable now that almost nobody thinks of it as an invention.', credit: 'Photo: Nenad Stojkovic, CC BY 2.0, via Wikimedia Commons' },
-      { img: g04Inkscape, cap: 'A vector object on a design canvas with its handles showing, which is Sketchpad’s argument carried forward, that you change a picture by pointing at the picture.', credit: 'Screenshot: Inkscape, CC BY-SA 3.0, via Wikimedia Commons' },
+      { img: g04Inkscape, cap: 'A vector object on a design canvas with its handles showing, making the argument Sketchpad made in 1963, that you change a picture by pointing at the picture.', credit: 'Screenshot: Inkscape, CC BY-SA 3.0, via Wikimedia Commons' },
     ],
     sources: [
       { label: 'Computer History Museum: the remarkable Ivan Sutherland', url: 'https://computerhistory.org/blog/the-remarkable-ivan-sutherland/' },
@@ -371,10 +371,10 @@ export const ERA_PAGES = {
       'The look was grey beveled chrome, buttons that bulged, toolbars that cast little shadows, edges pretending to be machined metal. It was skeuomorphism before the word was fashionable, and it is the exact texture flat design would later strip away.',
     ],
     notable: [
-      { t: 'The menu bar and the trash can', d: 'The Lisa and Mac conventions that made destructive actions visible and reversible. Attribution is genuinely contested, which is half the story of this era.' },
+      { t: 'The menu bar and the trash can', d: 'The Lisa and Mac conventions that made destructive actions visible and reversible. Attribution here is genuinely contested, and the argument is half the story.' },
       { t: 'The Start button, 1995', d: 'One word in a corner that taught a billion people where everything begins. Possibly the most-clicked pixel in history.' },
       { t: 'HyperCard stacks', d: 'Ordinary people linking cards of text and pictures years before the web. ViolaWWW, one of the first graphical browsers, was built by a HyperCard convert.' },
-      { t: 'The double-click', d: 'A tiny grammar rule, select versus open, that everyone on earth quietly memorised.' },
+      { t: 'The double-click', d: 'A tiny grammar rule, select versus open, that everyone on earth learned without ever being taught it.' },
     ],
     gallery: [
       { img: a04Star, cap: 'The Xerox Star 8010 desktop, with windows, a scroll bar, and In, Out, File and Printer drawn along the bottom as icons you could point at, four years before most people saw a mouse.', credit: 'Screen photo from the DigiBarn Computer Museum collection, CC0. Xerox Star interface © Xerox' },
@@ -383,7 +383,7 @@ export const ERA_PAGES = {
     ],
     now: [
       { img: p03Files, cap: 'Forty years on the room is unchanged, with Documents and Downloads and Pictures still drawn as folders, Trash still waiting in the sidebar, and two windows overlapping the way paper does on a desk.', credit: 'Screenshot: GNOME Files on Debian, GPLv2+, via Wikimedia Commons' },
-      { img: p04Plasma, cap: 'A launcher opening from the bottom left corner and a row of running programs along the foot of the screen, which is the arrangement Windows 95 shipped in 1995 and nobody has found a reason to abandon since.', credit: 'Screenshot: KDE Plasma 6, KDE Community, GPL, via Wikimedia Commons' },
+      { img: p04Plasma, cap: 'A launcher opening from the bottom left corner and a row of running programs along the foot of the screen, the arrangement Windows 95 shipped in 1995, and nobody has found a reason to abandon it since.', credit: 'Screenshot: KDE Plasma 6, KDE Community, GPL, via Wikimedia Commons' },
     ],
     sources: [
       { label: 'Bruce Horn: On Xerox, Apple and progress (folklore.org)', url: 'https://folklore.org/On_Xerox,_Apple_and_Progress.html' },
@@ -404,7 +404,7 @@ export const ERA_PAGES = {
   'the-web': {
     why: [
       'One person at CERN wired three ideas together, the link, the page, and the address, and the most important control in computing became an underlined word. Tim Berners-Lee proposed it in March 1989, had the first site running by the end of 1990, and gave it away. The interface stopped being something you bought in a box.',
-      'Then the page slowly learned to behave like software. Mosaic put images beside the text in 1993 and the web became something you would show your family, while Google reduced the whole thing to one box in an ocean of white. Gmail and AJAX made pages update without reloading, and the line between site and application quietly dissolved.',
+      'Then the page slowly learned to behave like software. Mosaic put images beside the text in 1993 and the web became something you would show your family, while Google reduced the whole thing to one box in an ocean of white. Gmail and AJAX made pages update without reloading, and the line between site and application stopped meaning much.',
     ],
     contained: [
       { t: 'The proposal, 1989', d: '"Information Management: A Proposal", handed to his group leader Mike Sendall on 12 March 1989. Sendall wrote "Vague, but exciting…" across the top of the first page and let him carry on. URL, HTML, HTTP: three inventions wired into one.' },
@@ -473,13 +473,13 @@ export const ERA_PAGES = {
       { t: 'The iOS 6 Notes app', d: 'Yellow legal paper and stitched leather: the high-water mark of skeuomorphism, and one of the most conspicuous things iOS 7 deleted.' },
     ],
     gallery: [
-      { img: a06Iphone, cap: 'An original iPhone in July 2007, two weeks after it went on sale, running Notes on its yellow legal-pad paper above a glossy keyboard, which is skeuomorphism at full volume.', credit: 'Photo: Nick Richards, CC BY-SA 2.0. iPhone interface © Apple' },
+      { img: a06Iphone, cap: 'An original iPhone in July 2007, two weeks after it went on sale, running Notes on its yellow legal-pad paper above a glossy keyboard, skeuomorphism at full volume.', credit: 'Photo: Nick Richards, CC BY-SA 2.0. iPhone interface © Apple' },
       { img: t01Ipad, cap: 'A finger drags a card across the green felt of a solitaire game on an iPad in 2010, and there is nothing in between, no cursor and no pointer, just a hand moving something that is pretending to be a real card.', credit: 'Photo: bark, CC BY 2.0, via Wikimedia Commons. Interface © Apple' },
       { img: t02Voicememos, cap: 'Apple’s Voice Memos gave the whole screen over to a chrome studio microphone and a swinging meter, on the theory that if software looked like an object you had already handled, nobody would need teaching.', credit: 'Photo: James Cridland, 2009, CC BY 2.0. Interface © Apple' },
     ],
     now: [
-      { img: t03Homescreen, cap: 'A phone held one handed today, apps arranged as a grid of fat rounded squares, because the fingertip never got any smaller even after all the leather and the felt were thrown out.', credit: 'Photo: Elena Rossini, CC BY-SA 4.0, via Wikimedia Commons' },
-      { img: t04Scroll, cap: 'A finger scrolls a list of stories on a phone in the dark, and nobody calls this a gesture any more, because it is simply how reading works now.', credit: 'Photo: Japanexperterna.se, CC BY-SA 2.0, via Wikimedia Commons' },
+      { img: t03Homescreen, cap: 'A phone held one handed today, apps arranged as a grid of fat rounded squares, because the fingertip never got any smaller after the leather and the felt were thrown out.', credit: 'Photo: Elena Rossini, CC BY-SA 4.0, via Wikimedia Commons' },
+      { img: t04Scroll, cap: 'A finger scrolls a list of stories on a phone in the dark, and nobody calls this a gesture any more.', credit: 'Photo: Japanexperterna.se, CC BY-SA 2.0, via Wikimedia Commons' },
     ],
     sources: [
       { label: 'Apple Newsroom: the App Store turns 10', url: 'https://www.apple.com/newsroom/2018/07/app-store-turns-10/' },
@@ -492,7 +492,7 @@ export const ERA_PAGES = {
     left: {
       paras: [
         'Take the physics, momentum, bounce, drag, because feedback that behaves like the world is why touch felt alive from the very first flick. And notice that Fitts’s law came back with a vengeance, since a fingertip is fat, and targets, spacing, and type all had to grow. The body always gets a vote.',
-        'What it cost was the keys. The physical keyboard and the stylus stopped being the default, and people still mourn the click, though both came back for the people who wanted them, the S Pen in 2011 and the Apple Pencil in 2015. Tactility is the debt touch never fully repaid, which is why your phone buzzes to fake it.',
+        'What it cost was the keys. The physical keyboard and the stylus stopped being the default, and people still mourn the click, though both came back for the people who wanted them, the S Pen in 2011 and the Apple Pencil in 2015. Tactility is the debt touch never repaid, and your phone buzzes to fake it.',
       ],
       thread: { to: 'flat-turn', text: 'Follow the thread: the leather and felt get deleted overnight in The Flat Turn' },
     },
@@ -512,13 +512,13 @@ export const ERA_PAGES = {
     ],
     ui: [
       'Flat design is an interface on a diet: colour fields, typography, and white space doing the work that bevels and shadows used to do. At its best it is calm and fast and lets content lead.',
-      'At its worst it is a guessing game, because strip every affordance and a label, a link, and a button all look identical. The industry spent the next decade quietly re-adding the cues it had proudly deleted, which is exactly how the next chapter begins. The flat turn was never really about looks, it was the ground being cleared so design could become a system.',
+      'At its worst it is a guessing game, because strip every affordance and a label, a link, and a button all look identical. The industry spent the next decade putting back the cues it had proudly deleted. The flat turn was never really about looks, it was the ground being cleared so design could become a system.',
     ],
     notable: [
       { t: 'Live tiles, 2010', d: 'Metro’s big idea: the icon as a small living dashboard. It lost the war but predicted widgets everywhere.' },
       { t: 'The iOS 6 to iOS 7 jump', d: 'The single clearest before-and-after in modern UI. Same phone, same apps, different century.' },
       { t: 'The hamburger menu', d: 'Three lines hiding everything, and not a flat-design invention at all, because Norm Cox drew it for the Xerox Star back in 1981. Small screens revived it from 2009, flat design adopted it, and the argument about it has never stopped.' },
-      { t: 'Thin type everywhere', d: 'The iOS 7 betas leaned on Helvetica Neue Light and Ultra Light, and the legibility complaints started within days. Apple walked the weights back before shipping and added a Bold Text setting, which is the whole era in miniature: elegance first, readability retrofitted.' },
+      { t: 'Thin type everywhere', d: 'The iOS 7 betas leaned on Helvetica Neue Light and Ultra Light, and the legibility complaints started within days. Apple walked the weights back before shipping and added a Bold Text setting. Elegance first, readability retrofitted.' },
     ],
     gallery: [
       { img: a07Wp7, cap: 'Microsoft’s own launch image for Windows Phone 7, showing the Metro start screen as a grid of flat coloured live tiles, three years before Apple flattened iOS.', credit: 'Image: Microsoft Sweden, CC BY 2.0. Windows Phone interface © Microsoft' },
@@ -540,8 +540,8 @@ export const ERA_PAGES = {
     ],
     left: {
       paras: [
-        'Take the trade-off, because you will face it on every project: decoration carries information. Strip the bevels and the screen gets calmer and faster, and also quietly harder to read. Affordance versus elegance is not a settled argument, it is a dial, and setting it is your job.',
-        'What it cost: certainty. A generation of users learned to tap things experimentally to find out what was interactive. The industry spent the next decade quietly re-adding the cues it had proudly deleted.',
+        'Take the trade-off, because you will face it on every project: decoration carries information. Strip the bevels and the screen gets calmer and faster, and harder to read. Affordance versus elegance is not a settled argument, it is a dial, and setting it is your job.',
+        'What it cost: certainty. A generation of users learned to tap things experimentally to find out what was interactive, and a decade of small corrections followed.',
       ],
       thread: { to: 'systems-material', text: 'Follow the thread: the missing depth comes back with rules in Systems & Material' },
     },
@@ -570,13 +570,13 @@ export const ERA_PAGES = {
       { t: 'The component library', d: 'The UI equivalent of standard parts. Less romantic than hand-drawn screens, and the reason products stopped falling apart.' },
     ],
     gallery: [
-      { img: a08Elevation, cap: 'The elevation chart from Google’s original Material specification, plotting every component from the switch resting at one unit up to the dialog floating at twenty-four, which is what a design language looks like once it becomes a measured system.', credit: 'Google, Material Design guidelines, Apache License 2.0' },
-      { img: s01Keylines, cap: 'A layout page from the original Material spec, with keylines, margin bands and numbered measurements laid over a real screen, which is what happens when a look becomes a set of rules somebody else has to follow.', credit: 'Google, Material Design guidelines, Apache License 2.0' },
-      { img: s02Carbonkit, cap: 'IBM’s Carbon system installed as a symbol library in 2018, where a designer inserts a button by choosing it from a menu instead of drawing one, which is the moment the deliverable stopped being a picture.', credit: 'IBM Carbon Design System documentation, Apache License 2.0' },
+      { img: a08Elevation, cap: 'The elevation chart from Google’s original Material specification, plotting every component from the switch resting at one unit up to the dialog floating at twenty-four. A design language, turned into measurements.', credit: 'Google, Material Design guidelines, Apache License 2.0' },
+      { img: s01Keylines, cap: 'A layout page from the original Material spec, with keylines, margin bands and numbered measurements laid over a real screen, back when a look was turning into a set of rules somebody else had to follow.', credit: 'Google, Material Design guidelines, Apache License 2.0' },
+      { img: s02Carbonkit, cap: 'IBM’s Carbon system installed as a symbol library in 2018, where a designer inserts a button by choosing it from a menu instead of drawing one. This is where the deliverable stopped being a picture.', credit: 'IBM Carbon Design System documentation, Apache License 2.0' },
     ],
     now: [
       { img: s03Figma, cap: 'The same system today, attached to a design file alongside IBM’s colour, pictogram and icon libraries, so the components arrive by subscription and update themselves whenever the system does.', credit: 'IBM Carbon Design System documentation, Apache License 2.0' },
-      { img: s04Tokens, cap: 'A component in a current Android app, annotated not with pixel measurements but with token names, which is what a spec looks like once the rules have become variables the code can read.', credit: 'Google, Android developer documentation, Apache License 2.0' },
+      { img: s04Tokens, cap: 'A component in a current Android app, annotated not with pixel measurements but with token names, so the rules now arrive as variables the code can read.', credit: 'Google, Android developer documentation, Apache License 2.0' },
     ],
     sources: [
       { label: 'Wikipedia: Material Design', url: 'https://en.wikipedia.org/wiki/Material_Design' },
@@ -596,7 +596,7 @@ export const ERA_PAGES = {
 
   'surface-returns': {
     why: [
-      'After a decade of flatness, fashion took the wheel and surfaces came back. Dark mode became a setting every app suddenly owed you, shipped system-wide by Apple and Google in 2018 and 2019. Frosted, blurred panels, which had been building quietly since iOS 7 and Yosemite, were pushed to the front in macOS Big Sur and Windows 11, a look the internet named glassmorphism and traced back to Aqua’s translucency.',
+      'After a decade of flatness, fashion took the wheel and surfaces came back. Dark mode became a setting every app suddenly owed you, shipped system-wide by Apple and Google in 2018 and 2019. Frosted, blurred panels had been building since iOS 7 and Yosemite, and macOS Big Sur and Windows 11 pushed them to the front. The internet named the result glassmorphism and traced it back to Aqua.',
       'The era argued with itself in public: neumorphism tried soft extruded shapes and mostly failed the contrast test within a year, brutalism revolted against the polish of design systems with raw HTML honesty, and bento grids boxed everything into tidy compartments. No single style won, which is itself the story. Once design ran on systems and tokens, restyling became cheap, and the industry started changing skins like the seasons.',
     ],
     contained: [
@@ -618,7 +618,7 @@ export const ERA_PAGES = {
     ],
     gallery: [
       { img: a09Bigsur, cap: 'macOS Big Sur in 2020, with Maps, Safari and Messages layered as translucent panels and Control Center frosted at the corner, twenty years after Aqua first made pixels look wet.', credit: 'Screenshot: Apple Newsroom. macOS interface © Apple' },
-      { img: r01Light, cap: 'A file manager in 2020 in its light theme, an ordinary window doing ordinary work, and worth looking at closely because the next picture is the same window.', credit: 'Screenshot: System76, Pop!_OS 20.04, GPLv2+, via Wikimedia Commons' },
+      { img: r01Light, cap: 'A file manager in 2020 in its light theme, an ordinary window doing ordinary work. Look at it closely, because the next picture is the same window.', credit: 'Screenshot: System76, Pop!_OS 20.04, GPLv2+, via Wikimedia Commons' },
       { img: r02Dark, cap: 'The same window, same version, same folder, switched to dark, which by 2020 was all that changing the entire look of a system took, because the colours lived in a theme rather than in each screen.', credit: 'Screenshot: System76, Pop!_OS 20.04, GPLv2+, via Wikimedia Commons' },
     ],
     now: [
@@ -665,12 +665,12 @@ export const ERA_PAGES = {
     ],
     gallery: [
       { img: a10Echo, cap: 'An Amazon Echo listening, its light ring lit, which is the entire interface: no screen and no cursor, just a glowing edge telling you the machine is paying attention.', credit: 'Photo: Smart Home Perfected, CC BY 2.0' },
-      { img: n01Visionpro, cap: 'A man wearing an Apple Vision Pro in 2024, one hand raised in the pinch that Apple made the click while his eyes do the pointing, which is the desktop metaphor unpacked into the room around him.', credit: 'Photo: Ramsey Cardy, Collision via Sportsfile, CC BY 2.0, via Wikimedia Commons' },
+      { img: n01Visionpro, cap: 'A man wearing an Apple Vision Pro in 2024, one hand raised in the pinch that Apple made the click while his eyes do the pointing, the desktop metaphor unpacked into the room around him.', credit: 'Photo: Ramsey Cardy, Collision via Sportsfile, CC BY 2.0, via Wikimedia Commons' },
       { img: n02Chatgpt23, cap: 'ChatGPT in February 2023, with Free Research Preview still printed along the bottom of a screen that is otherwise nothing but a question, an answer, and an empty box waiting for the next one.', credit: 'Screenshot: Pollema, CC BY-SA 4.0, via Wikimedia Commons. Interface © OpenAI' },
     ],
     now: [
-      { img: n03Gemini, cap: 'An assistant in 2026 with the whole window given over to one line of invitation and one empty field beneath it, which is the newest interface on earth asking what a teletype asked in 1964.', credit: 'Screenshot via Wikimedia Commons. Interface © Google' },
-      { img: n04Chatnow, cap: 'A conversation with a machine that answers in sentences, which is where half a century of pointing and clicking arrives, back at a blinking line and a question.', credit: 'Screenshot via Wikimedia Commons. Interface © OpenAI' },
+      { img: n03Gemini, cap: 'An assistant in 2026 with the whole window given over to one line of invitation and one empty field beneath it, the newest interface on earth asking what a teletype asked in 1964.', credit: 'Screenshot via Wikimedia Commons. Interface © Google' },
+      { img: n04Chatnow, cap: 'A conversation with a machine that answers in sentences, where half a century of pointing and clicking arrives, back at a blinking line and a question.', credit: 'Screenshot via Wikimedia Commons. Interface © OpenAI' },
     ],
     sources: [
       { label: 'SRI: the origins of Siri', url: 'https://www.sri.com/hoi/siri/' },

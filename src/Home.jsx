@@ -41,8 +41,8 @@ function Method() {
               So every factual claim across these ten eras went through a separate pass whose
               only job was to try to prove it wrong. That pass changed seventy-five things,
               including two myths this site was busy repeating while claiming to correct
-              myths, and two quotes that had been quietly paraphrased inside their own
-              quotation marks.
+              myths, and two quotes that had drifted a few words from what the person
+              actually wrote.
             </p>
             <p>
               It also found a citation pointing at a source that does not exist and never has.
@@ -51,7 +51,7 @@ function Method() {
               version you have read elsewhere.
             </p>
             <p className="method-kicker">
-              The drafting was the fast part. The checking was not.
+              The drafting was the fast part. The checking took the rest of it.
             </p>
           </div>
 
