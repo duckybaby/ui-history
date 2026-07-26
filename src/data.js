@@ -16,6 +16,19 @@ import e08MaterialLayers from './assets/eras/e08-material-layers.webp'
 import e09FrostedGlass from './assets/eras/e09-frosted-glass.webp'
 import e10Homepod from './assets/eras/e10-homepod.webp'
 
+/* the lead figure on each era page: a photograph of the real machine, or a
+   screenshot of the real interface. Credits print under the caption. */
+import a01Punchcard from './assets/eras/a01-punchcard.webp'
+import a02Vt100 from './assets/eras/a02-vt100.webp'
+import a03Alto from './assets/eras/a03-alto.webp'
+import a04Star from './assets/eras/a04-star.webp'
+import a05Google1998 from './assets/eras/a05-google1998.webp'
+import a06Iphone from './assets/eras/a06-iphone.webp'
+import a07Wp7 from './assets/eras/a07-wp7.webp'
+import a08Elevation from './assets/eras/a08-elevation.webp'
+import a09Bigsur from './assets/eras/a09-bigsur.webp'
+import a10Echo from './assets/eras/a10-echo.webp'
+
 /* ============================================================
    STOPS — the 10-stop homepage timeline ("the main event").
    Each stop: big (year range), cursive (movement / evocative label),
@@ -176,7 +189,7 @@ export const ERA_PAGES = {
       { t: 'Fitts’s law, 1954', d: 'Paul Fitts, an aviation psychologist, measured how long it takes to hit a target of a given size at a given distance. It grew straight out of this era’s cockpit work, and every button on your phone still obeys it.' },
     ],
     gallery: [
-      { img: 'https://images.unsplash.com/photo-1524668951403-d44b28200ce0?auto=format&fit=crop&w=1400&q=60', cap: 'The typewriter: QWERTY’s first home, and the reason your keyboard looks the way it does.' },
+      { img: a01Punchcard, cap: 'A Census Bureau clerk works a Hollerith pantograph punch in about 1940, keying a population card by hand, one hole at a time, so that a machine could later read what she had recorded.', credit: 'U.S. Bureau of the Census, via the U.S. National Archives (NARA 513295), public domain' },
       { img: 'https://images.unsplash.com/photo-1523966211575-eb4a01e7dd51?auto=format&fit=crop&w=1400&q=60', cap: 'The telephone: for most people, the first machine they talked through.' },
       { img: 'https://images.unsplash.com/photo-1453928582365-b6ad33cbcf64?auto=format&fit=crop&w=1400&q=60', cap: 'Dials, hands, and bells: feedback you could hear and feel.' },
     ],
@@ -223,7 +236,7 @@ export const ERA_PAGES = {
       { t: 'The blinking cursor', d: 'One of the oldest pieces of screen UI still in daily use. Charles Kiesling patented a blinking cursor for CRT displays in 1967, and it has been asking the same question ever since: your move.' },
     ],
     gallery: [
-      { img: 'https://images-assets.nasa.gov/image/s70-35368/s70-35368~orig.jpg', cap: 'Mission Control, Apollo 13, 1970: rooms full of consoles, every screen a text screen.' },
+      { img: a02Vt100, cap: 'A DEC VT100 wired to a PDP-11, mid-session, with the prompt sitting at the head of each typed line exactly the way every command line has done since.', credit: 'Photo: Autopilot, CC BY-SA 3.0, via Wikimedia Commons' },
       { img: 'https://images.pexels.com/photos/9951077/pexels-photo-9951077.jpeg?auto=compress&cs=tinysrgb&w=1400', cap: 'Green phosphor: the colour of computing for two decades.' },
       { img: 'https://images.pexels.com/photos/37787963/pexels-photo-37787963.jpeg?auto=compress&cs=tinysrgb&w=1400', cap: 'The keyboard inherits everything: the terminal made typing the whole interface.' },
     ],
@@ -265,7 +278,7 @@ export const ERA_PAGES = {
       { t: 'The Alto, 1973', d: 'Most of the graphical interface, a decade early, with a bitmapped screen, a mouse, and the overlapping windows that came out of Smalltalk. Desktop icons were not part of it, and the full desktop metaphor of files and folders was formalised later, for the Xerox Star.' },
     ],
     gallery: [
-      { img: 'https://images-assets.nasa.gov/image/S71-17122/S71-17122~orig.jpg', cap: 'The state of the art, early 1970s: CRTs, consoles, and rooms built around machines.' },
+      { img: a03Alto, cap: 'A Xerox Alto, the 1973 machine that put a bitmapped display, a keyboard and a three-button mouse on one desk, photographed against a wall of the Smalltalk source that ran on it.', credit: 'Photo: Maksym Kozlenko, CC BY-SA 4.0, via Wikimedia Commons' },
       { img: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1400&q=60', cap: 'Phosphor and vectors: what screens looked like before the bitmap won.' },
     ],
     sources: [
@@ -308,7 +321,7 @@ export const ERA_PAGES = {
       { t: 'The double-click', d: 'A tiny grammar rule, select versus open, that everyone on earth quietly memorised.' },
     ],
     gallery: [
-      { img: 'https://images.unsplash.com/photo-1461360370896-922624d12aa1?auto=format&fit=crop&w=1400&q=60', cap: 'Files and folders came from somewhere: information as physical cards, waiting for a metaphor.' },
+      { img: a04Star, cap: 'The Xerox Star 8010 desktop, with windows, a scroll bar, and In, Out, File and Printer drawn along the bottom as icons you could point at, four years before most people saw a mouse.', credit: 'Screen photo from the DigiBarn Computer Museum collection, CC0. Xerox Star interface © Xerox' },
       { img: 'https://images.pexels.com/photos/13570135/pexels-photo-13570135.jpeg?auto=compress&cs=tinysrgb&w=1400', cap: 'The machine as object of desire: industrial design becomes part of the interface.' },
     ],
     sources: [
@@ -351,7 +364,7 @@ export const ERA_PAGES = {
       { t: 'The URL', d: 'An address for every page ever made. Ugly, fragile, and one of the great open standards of history.' },
     ],
     gallery: [
-      { img: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1400&q=60', cap: 'The network made visible: the web put an address on everything, everywhere.' },
+      { img: a05Google1998, cap: 'The Google homepage as it stood in December 1998, still carrying a BETA mark, one text box and two buttons in a field of white, while every rival portal was a wall of links.', credit: 'Screenshot via the Internet Archive. Google homepage © Google' },
       { img: 'https://images.pexels.com/photos/17489151/pexels-photo-17489151.jpeg?auto=compress&cs=tinysrgb&w=1400', cap: 'The web has a body: it lives in racks like these.' },
       { img: 'https://images.pexels.com/photos/6466141/pexels-photo-6466141.jpeg?auto=compress&cs=tinysrgb&w=1400', cap: 'Every link resolves to a machine humming in a room like this one.' },
     ],
@@ -395,7 +408,7 @@ export const ERA_PAGES = {
       { t: 'The iOS 6 Notes app', d: 'Yellow legal paper and stitched leather: the high-water mark of skeuomorphism, and one of the most conspicuous things iOS 7 deleted.' },
     ],
     gallery: [
-      { img: 'https://images.pexels.com/photos/9558002/pexels-photo-9558002.jpeg?auto=compress&cs=tinysrgb&w=1400', cap: 'The camera that replaced the camera: the phone becomes the lens on everything.' },
+      { img: a06Iphone, cap: 'An original iPhone in July 2007, two weeks after it went on sale, running Notes on its yellow legal-pad paper above a glossy keyboard, which is skeuomorphism at full volume.', credit: 'Photo: Nick Richards, CC BY-SA 2.0. iPhone interface © Apple' },
       { img: 'https://images.pexels.com/photos/365194/pexels-photo-365194.jpeg?auto=compress&cs=tinysrgb&w=1400', cap: 'The home screen grid: apps as objects, arranged like belongings.' },
       { img: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=1400&q=60', cap: 'One hand, one thumb: the posture the whole industry redesigned itself around.' },
     ],
@@ -439,7 +452,7 @@ export const ERA_PAGES = {
       { t: 'Thin type everywhere', d: 'The iOS 7 betas leaned on Helvetica Neue Light and Ultra Light, and the legibility complaints started within days. Apple walked the weights back before shipping and added a Bold Text setting, which is the whole era in miniature: elegance first, readability retrofitted.' },
     ],
     gallery: [
-      { img: 'https://images.pexels.com/photos/267389/pexels-photo-267389.jpeg?auto=compress&cs=tinysrgb&w=1400', cap: 'The flat grid: icons reduced to coloured geometry.' },
+      { img: a07Wp7, cap: 'Microsoft’s own launch image for Windows Phone 7, showing the Metro start screen as a grid of flat coloured live tiles, three years before Apple flattened iOS.', credit: 'Image: Microsoft Sweden, CC BY 2.0. Windows Phone interface © Microsoft' },
       { img: 'https://images.pexels.com/photos/3850263/pexels-photo-3850263.jpeg?auto=compress&cs=tinysrgb&w=1400', cap: 'After the diet: colour and type doing all the work.' },
       { img: 'https://images.unsplash.com/photo-1557683316-973673baf926?auto=format&fit=crop&w=1400&q=60', cap: 'The gradient survived, barely: as a backdrop, not a button.' },
     ],
@@ -484,7 +497,7 @@ export const ERA_PAGES = {
       { t: 'The component library', d: 'The UI equivalent of standard parts. Less romantic than hand-drawn screens, and the reason products stopped falling apart.' },
     ],
     gallery: [
-      { img: 'https://images.pexels.com/photos/20085502/pexels-photo-20085502.jpeg?auto=compress&cs=tinysrgb&w=1400', cap: 'Paper as a metaphor you can photograph: surfaces, curves, and real shadows.' },
+      { img: a08Elevation, cap: 'The elevation chart from Google’s original Material specification, plotting every component from the switch resting at one unit up to the dialog floating at twenty-four, which is what a design language looks like once it becomes a measured system.', credit: 'Google, Material Design guidelines, Apache License 2.0' },
       { img: 'https://images.pexels.com/photos/4258830/pexels-photo-4258830.jpeg?auto=compress&cs=tinysrgb&w=1400', cap: 'Layers with opinions: every surface at its own elevation.' },
       { img: 'https://images.unsplash.com/photo-1557682250-33bd709cbe85?auto=format&fit=crop&w=1400&q=60', cap: 'The system palette: one bold accent doing a lot of governed work.' },
     ],
@@ -527,7 +540,7 @@ export const ERA_PAGES = {
       { t: 'The bento homepage', d: 'Every product page a lunchbox of little cards. Tidy, scannable, and instantly everywhere.' },
     ],
     gallery: [
-      { img: 'https://images.pexels.com/photos/10873994/pexels-photo-10873994.jpeg?auto=compress&cs=tinysrgb&w=1400', cap: 'Frost as an interface material: blur implies what is behind.' },
+      { img: a09Bigsur, cap: 'macOS Big Sur in 2020, with Maps, Safari and Messages layered as translucent panels and Control Center frosted at the corner, twenty years after Aqua first made pixels look wet.', credit: 'Screenshot: Apple Newsroom. macOS interface © Apple' },
       { img: 'https://images.pexels.com/photos/36810858/pexels-photo-36810858.jpeg?auto=compress&cs=tinysrgb&w=1400', cap: 'Translucency with structure: panels you can almost see through.' },
       { img: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1400&q=60', cap: 'The surface argument: iridescence, depth, and light as decoration again.' },
     ],
@@ -570,7 +583,7 @@ export const ERA_PAGES = {
       { t: 'The prompt', d: 'The word itself came full circle: from the blinking cursor of the 1960s to the sentence you type at a model today.' },
     ],
     gallery: [
-      { img: 'https://images.pexels.com/photos/14309805/pexels-photo-14309805.jpeg?auto=compress&cs=tinysrgb&w=1400', cap: 'An interface with no screen: the light ring is the entire UI.' },
+      { img: a10Echo, cap: 'An Amazon Echo listening, its light ring lit, which is the entire interface: no screen and no cursor, just a glowing edge telling you the machine is paying attention.', credit: 'Photo: Smart Home Perfected, CC BY 2.0' },
       { img: 'https://images.pexels.com/photos/5380589/pexels-photo-5380589.jpeg?auto=compress&cs=tinysrgb&w=1400', cap: 'Green text again: the conversation returns, this time with the machine answering fluently.' },
       { img: 'https://images.pexels.com/photos/14309813/pexels-photo-14309813.jpeg?auto=compress&cs=tinysrgb&w=1400', cap: 'Ambient computing: devices designed to be spoken to, not looked at.' },
     ],

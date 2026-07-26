@@ -113,7 +113,10 @@ export default function EraPage() {
 
           <figure className="ep-fig">
             <img src={page.gallery[0].img} alt={page.gallery[0].cap} loading="lazy" />
-            <figcaption>{page.gallery[0].cap}</figcaption>
+            <figcaption>
+              {page.gallery[0].cap}
+              {page.gallery[0].credit && <span className="ep-credit">{page.gallery[0].credit}</span>}
+            </figcaption>
           </figure>
 
           <section className="ep-sec">

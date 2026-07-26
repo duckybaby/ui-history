@@ -397,6 +397,7 @@ a:focus-visible,button:focus-visible{outline:0.125rem solid var(--accent);outlin
 .ep-fig{max-width:62.5rem;margin:clamp(3.5rem,8vw,6.875rem) auto 0;padding:0 var(--gut);}
 .ep-fig img{width:100%;height:auto;border-radius:var(--r);display:block;}
 .ep-fig figcaption{font-family:var(--mono);font-size:0.8125rem;color:var(--ink-3);margin-top:0.625rem;}
+.ep-credit{display:block;margin-top:.4em;font-size:0.75rem;color:var(--ink-3);opacity:.75;}
 .ep-gallery{max-width:62.5rem;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:1rem;padding:0 var(--gut);}
 .ep-gallery .ep-fig{margin:clamp(3.5rem,8vw,6.875rem) 0 0;padding:0;}
 .ep-gallery .ep-fig img{aspect-ratio:4/3;object-fit:cover;}
