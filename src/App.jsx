@@ -23,6 +23,7 @@ function Footer() {
           <ul className="foot-links">
             <li><a href="mailto:hello@shankar.design">hello@shankar.design</a></li>
             <li><a href="https://www.linkedin.com/in/shankar-design/" target="_blank" rel="noreferrer">LinkedIn</a></li>
+            <li><a href="https://shankar.design" target="_blank" rel="noreferrer">Website</a></li>
           </ul>
         </div>
       </div>
